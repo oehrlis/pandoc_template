@@ -2,7 +2,7 @@
 title: "EUS, Kerberos, SSL and OUD a guideline"
 subtitle: "Demo Scripts, Examples and Exercises"
 author: [Stefan Oehrli]
-date: "2018-11-01"
+date: "2018 November 01"
 tvddocversion: 0.9
 papersize: a4 
 listings-disable-line-numbers: true
