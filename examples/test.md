@@ -1,16 +1,15 @@
 ---
-title: "Demos EUS, Kerberos, SSL and OUD a guideline"
+title: "EUS, Kerberos, SSL and OUD a guideline"
+subtitle: "Demo Scripts, Examples and Exercises"
 author: [Stefan Oehrli]
 date: "2018-11-01"
-subject: "Markdown"
+tvddocversion: 0.9
 papersize: a4 
-margin-left: 2.5cm
-margin-right: 2.2cm
-margin-top: 2cm
-margin-bottom: 2cm
 listings-disable-line-numbers: true
 titlepage: true
 toc: true
+toc-own-page: true
+logo: "TrivadisLogoSmall.eps"
 ...
 
 # Demos EUS, Kerberos, SSL and OUD a guideline
