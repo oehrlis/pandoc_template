@@ -4,9 +4,9 @@ A **pandoc LaTeX template** to convert markdown files to PDF or LaTeX using the 
 
 ## Preview
 
-                                             A basic example page
-:------------------------------------------------------------------------------------------------------------:
-[![A basic example page](examples/test.png)](examples/test.pdf)
+A custom title page      |  A basic example page
+:-------------------------:|:-------------------------:
+[![A custom title page](examples/test.png)](examples/test.pdf)  |  [![A basic example page](examples/test.png)](examples/test.pdf)
 
 ## Installation
 
