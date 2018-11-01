@@ -3,10 +3,14 @@ title: "Demos EUS, Kerberos, SSL and OUD a guideline"
 author: [Stefan Oehrli]
 date: "2018-11-01"
 subject: "Markdown"
-geometry: margin=1cm 
 papersize: a4 
+margin-left: 2.5cm
+margin-right: 2.2cm
+margin-top: 2cm
+margin-bottom: 2cm
 listings-disable-line-numbers: true
 titlepage: true
+toc: true
 ...
 
 # Demos EUS, Kerberos, SSL and OUD a guideline
