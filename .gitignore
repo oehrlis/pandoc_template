@@ -1,0 +1,6 @@
+**/*.log
+**/*.fls
+**/*.fdb_latexmk
+**/*.aux
+**/*.tgz
+**/*.DS_Store
