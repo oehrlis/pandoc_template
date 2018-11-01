@@ -38,6 +38,14 @@ CREATE USER SOE_KERBEROS IDENTIFIED EXTERNALLY AS 'soe@POSTGASSE.ORG';
 GRANT tvd_connect TO SOE_KERBEROS;
 ```
 
+| ID | Test  | Comment   |
+|----|-------|-----------|
+| 1  | wieso | halt text |
+| 2  | wieso | halt text |
+| 3  | wieso | halt text |
+| 4  | wieso | halt text |
+| 5  | wieso | halt text |
+
 ## Password Verifier
 
 Clean up and remove the old users.
