@@ -654,9 +654,9 @@ $else$
 
   %$if(logo)$\includegraphics[width=1.00\textwidth]{$logo$}$else$logo$endif$
 
-  \lhead[$if(header-right)$$header-right$$else$ \TVDLogo $endif$]{\color{tvdred}\rule{3mm}{3mm}\hspace{1mm}\color{tvdred}\rule{3mm}{3mm}\hspace{1mm}\rule{3mm}{3mm}}
+  \lhead[$if(header-right)$$header-right$$else$ \TVDLogo $endif$]{$if(header-left)$$header-left$$else$$endif$}
   \chead[$if(header-center)$$header-center$$else$$endif$]{$if(header-center)$$header-center$$else$$endif$}
-  \rhead[\color{tvdred}\rule{3mm}{3mm}\hspace{1mm}\color{tvdred}\rule{3mm}{3mm}\hspace{1mm}\rule{3mm}{3mm}]{$if(header-right)$$header-right$$else$ \TVDLogo $endif$}
+  \rhead[$if(header-left)$$header-left$$else$$endif$]{$if(header-right)$$header-right$$else$ \TVDLogo $endif$}
 
   \lfoot[$if(footer-right)$$footer-right$$else$\thepage\ / \pageref{LastPage}$endif$]{$if(footer-left)$$footer-left$$else$$title$$endif$}
   \cfoot[$if(footer-center)$$footer-center$$else$$endif$]{$if(footer-center)$$footer-center$$else$$endif$}
@@ -681,16 +681,13 @@ $if(titlepage)$
 
   % TVD Boxes
   \begin{flushleft}
-    \color{tvdred}\rule{2,5cm}{2,5cm} \hspace{2mm} \color{tvdgray}\rule{2,5cm}{2,5cm} \hspace{2mm} \rule{2,5cm}{2,5cm} 
+  %  \color{tvdred}\rule{2,5cm}{2,5cm} \hspace{2mm} \color{tvdgray}\rule{2,5cm}{2,5cm} \hspace{2mm} \rule{2,5cm}{2,5cm} 
   \end{flushleft}
 
   $if(logo)$
-    \begin{textblock}{3}(11.6,1,93)
-      \includegraphics[width=1.00\textwidth]{$logo$}
-    \end{textblock}
-    %\begin{textblock}{3}(2,5.85)
-    %  \includegraphics[width=1.00\textwidth, left]{images/ToolboxIcon.eps} 
-    %\end{textblock}
+    \begin{flushright}
+      \includegraphics[width=5.12cm, right]{$logo$}
+    \end{flushright}
   $endif$
 
   \begin{flushright}
