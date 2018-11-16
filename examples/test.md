@@ -9,7 +9,7 @@ listings-disable-line-numbers: true
 titlepage: true
 toc: true
 toc-own-page: true
-logo: "TrivadisLogoSmall.eps"
+logo: "TVDLogoHi2019.eps"
 ...
 
 # Demos EUS, Kerberos, SSL and OUD a guideline
