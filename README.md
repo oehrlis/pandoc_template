@@ -18,13 +18,20 @@ A custom title page      |  A basic example page
 	
 	If there are no folders called `templates` or `pandoc` you need to create them and put the template `trivadis.latex` inside.
 
+Alternatively you can keep using the `trivadis.tex` without putting it to the user defined template folder. In this case you just have to add the template via command line parameter e.g. `--template trivadis.tex`.
+
+* Use template from the custom template folder `--template trivadis`.
+* Provide the template via command line parameter `--template trivadis.tex`.
+
+The following examples will use the Trivadis template from the custom template folder. If you have not copy the template as described above, you will have to adapt the commands and explicitly provide the path to the template.
+
 ## Usage
 
 1. Open the terminal and navigate to the folder where your markdown file is located.
 2. Execute the following command
     
     ```bash
-    pandoc test.md -o test.pdf --from markdown --template trivadis --listings
+    pandoc examples/test.md -o examples/test.pdf --from markdown --template trivadis --listings
     ```
     
     where `test.md` is the markdown file you want to convert to PDF.
@@ -37,7 +44,7 @@ title: "The Document Title"
 author: [Example Author, Another Author]
 date: "2017-02-20"
 keywords: [Markdown, Example]
-...
+---
 
 Here is the actual document text...
 ```
@@ -108,14 +115,14 @@ This template defines some new variables to control the appearance of the title 
 You can get syntax highlighting of delimited code blocks by using the LaTeX package listings with the option `--listings`. This example will produce the same syntax highlighting as in the example PDF.
 	
 ```bash
-pandoc test.md -o test.pdf --template trivadis --listings
+pandoc examples/test.md -o examples/test.pdf --template trivadis --listings
 ```
 ### Syntax Highlighting Without Listings
 
 The following examples show [syntax highlighting of delimited code blocks](http://pandoc.org/MANUAL.html#syntax-highlighting) without using listings. To see a list of all the supported highlight styles, type `pandoc --list-highlight-styles`.
 	
 ```bash
-pandoc example.md -o example.pdf --template test --highlight-style pygments
+pandoc examples/test.md -o examples/test.pdf --template trivadis --highlight-style pygments
 ```
 
 ### Standalone LaTeX Document
@@ -123,7 +130,7 @@ pandoc example.md -o example.pdf --template test --highlight-style pygments
 To produce a standalone LaTeX document for compiling with any LaTeX editor use `.tex` as an output file extension.
 	
 ```bash
-pandoc example.md -o example.tex --template trivadis
+pandoc examples/test.md -o examples/test.tex --template trivadis
 ```
 
 ### Changing the Document Language
@@ -131,13 +138,13 @@ pandoc example.md -o example.tex --template trivadis
 The default language of this template is American English. The `lang` variable identifies the main language of the document, using a code according to [BCP 47](https://tools.ietf.org/html/bcp47) (e.g. `en` or `en-GB`). For an incomplete list of the supported language codes see [the documentation for the hyph-utf8 package (Section 2)](http://mirrors.ctan.org/language/hyph-utf8/doc/generic/hyph-utf8/hyph-utf8.pdf). The following example changes the language to British English:
 	
 ```bash
-pandoc example.md -o example.pdf --template trivadis -V lang=en-GB
+pandoc examples/test.md -o examples/test.pdf --template trivadis -V lang=en-GB
 ```
 	
 The following example changes the language to German:
 	
 ```bash
-pandoc example.md -o example.pdf --template trivadis -V lang=de
+pandoc examples/test.md -o examples/test.pdf --template trivadis -V lang=de
 ```
 
 ### Typesetting a Book

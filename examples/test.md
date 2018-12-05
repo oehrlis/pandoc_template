@@ -69,13 +69,13 @@ Reset all passwords using *IDENTIFIED BY VALUES* to explicitly set a particular 
 
 ``` SQL
 ALTER USER user_10g IDENTIFIED BY VALUES '808E79166793CFD1';
-ALTER USER user_11g IDENTIFIED BY VALUES 'S:22D8239017006EBDE054108BF367F22
-                                          5B5E731D12C91A3BEB31FA28D4A38';
-ALTER USER user_12c IDENTIFIED BY VALUES 'T:C6CE7A88CC5D0E048F32A564D2B6A7B
-                                          DC78A2092184F28D13A90FC071F804E5E
-                                          A09D4D2A3749AA79BFD0A90D18DEC5788
-                                          D2B8754AE20EE5C309DBA87550E8AA15E
-                                          AF2746ED431BF4543D2ABE33E22678';
+ALTER USER user_11g IDENTIFIED BY VALUES 'S:22D8239017006EBDE054108BF367F
+                                        225B5E731D12C91A3BEB31FA28D4A38';
+ALTER USER user_12c IDENTIFIED BY VALUES 'T:C6CE7A88CC5D0E048F32A564D2B6A7
+                                        BDC78A2092184F28D13A90FC071F804E5E
+                                        A09D4D2A3749AA79BFD0A90D18DEC5788D
+                                        2B8754AE20EE5C309DBA87550E8AA15EAF
+                                        2746ED431BF4543D2ABE33E22678';
 ```
 
 See what we do have in *dba_users*.
