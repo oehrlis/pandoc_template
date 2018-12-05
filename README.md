@@ -25,6 +25,29 @@ Alternatively you can keep using the `trivadis.tex` without putting it to the us
 
 The following examples will use the Trivadis template from the custom template folder. If you have not copy the template as described above, you will have to adapt the commands and explicitly provide the path to the template.
 
+## Logo
+
+The Trivadis Pandoc template does use a company logo. By default it will lock for the file `images/TVDLogo2019.eps` in your current folder. The PDF conversion via Latex will fail, if the file does not exist. There are a couple of option to provide a logo.
+
+1. Provide the logo in a local image folder e.g. `images/TVDLogo2019.eps`
+2. Specify a logo via command line parameter by adding pandoc variable parameter `-V KEY[=VAL]` respectively `--variable=KEY[:VAL]`
+
+```bash
+pandoc examples/test.md -o examples/test.pdf --template trivadis --listings -V logo=images/TVDLogo2018.eps
+pandoc examples/test.md -o examples/test.pdf --template trivadis --listings --variable=logo:images/TVDLogo2018.eps
+```
+
+3. The simples method is to add the logo in the metadata of you markdown file. There you just have to provide the relative path you the logo.
+
+```markdown
+---
+title: "The Document Title"
+author: [Example Author, Another Author]
+date: "2017-02-20"
+logo: images/TVDLogo2019.eps
+---
+```
+
 ## Usage
 
 1. Open the terminal and navigate to the folder where your markdown file is located.
