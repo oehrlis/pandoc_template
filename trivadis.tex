@@ -253,7 +253,11 @@ $else$
   \usepackage[margin=2.5cm,includehead=true,includefoot=true,centering]{geometry}
 $endif$
 
+% load graphicx any way
 $if(logo)$
+  \usepackage[export]{adjustbox}
+  \usepackage{graphicx}
+$else$
   \usepackage[export]{adjustbox}
   \usepackage{graphicx}
 $endif$
@@ -419,8 +423,11 @@ $if(beamer)$
   $if(titlegraphic)$
     \titlegraphic{\includegraphics{$titlegraphic$}}
   $endif$
+  
   $if(logo)$
     \logo{\includegraphics{$logo$}}
+  $else$
+    \logo{\includegraphics{images/TVDLogo2019.eps}}
   $endif$
 $endif$
 
@@ -650,9 +657,7 @@ $else$
   \fancyhead{}
   \fancyfoot{}
 
-  \newcommand*{\TVDLogo}{$if(logo)$\includegraphics[width=0.2\textwidth]{$logo$}$else$logo$endif$}
-
-  %$if(logo)$\includegraphics[width=1.00\textwidth]{$logo$}$else$logo$endif$
+  \newcommand*{\TVDLogo}{$if(logo)$\includegraphics[width=0.2\textwidth]{$logo$}$else$\includegraphics[width=0.2\textwidth]{images/TVDLogo2019.eps}$endif$}
 
   \lhead[$if(header-right)$$header-right$$else$ \TVDLogo $endif$]{$if(header-left)$$header-left$$else$$endif$}
   \chead[$if(header-center)$$header-center$$else$$endif$]{$if(header-center)$$header-center$$else$$endif$}
@@ -687,6 +692,10 @@ $if(titlepage)$
   $if(logo)$
     \begin{flushright}
       \includegraphics[width=5.12cm, right]{$logo$}
+    \end{flushright}
+  $else$
+    \begin{flushright}
+      \includegraphics[width=5.12cm, right]{images/TVDLogo2019.eps}
     \end{flushright}
   $endif$
 
