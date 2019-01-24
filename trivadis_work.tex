@@ -280,7 +280,7 @@ $if(highlighting-macros)$
 $endif$
 
 $if(tables)$
-\usepackage{longtable,booktabs,tabularx}
+  \usepackage{tabularx,booktabs,longtable}
   $if(beamer)$
     \usepackage{caption}
     % These lines are needed to make table captions work with longtable:
@@ -550,14 +550,15 @@ $endif$
 
 % tables
 $if(tables)$
-\definecolor{table-row-color}{gray}{0.8}
-\definecolor{table-rule-color}{gray}{0.8}
+  \definecolor{table-row-color}{HTML}{FFFFFF}
+  \definecolor{table-rule-color}{HTML}{AAAAAA}
+  \definecolor{tvdgray2}{gray}{0.8} 
 
-\arrayrulecolor{black}
-%%\arrayrulecolor{table-rule-color}     % color of \toprule, \midrule, \bottomrule
-%\arrayrulecolor{tvdgray2}     % color of \toprule, \midrule, \bottomrule
-\setlength\heavyrulewidth{0.3ex}      % thickness of \toprule, \bottomrule
-\renewcommand{\arraystretch}{1.3}     % spacing (padding)
+  \arrayrulecolor{black!40}
+  %\arrayrulecolor{table-rule-color}    % color of \toprule, \midrule, \bottomrule
+  \arrayrulecolor{tvdgray2}             % color of \toprule, \midrule, \bottomrule
+  \setlength\heavyrulewidth{0.3ex}      % thickness of \toprule, \bottomrule
+  \renewcommand{\arraystretch}{1.3}     % spacing (padding)
 
   % Reset rownum counter so that each table
   % starts with the same row colors.
@@ -565,10 +566,10 @@ $if(tables)$
   \let\oldlongtable\longtable
   \let\endoldlongtable\endlongtable
   \renewenvironment{longtable}{
-  %\rowcolors{3}{}{table-row-color!100}  % row color
+  \rowcolors{3}{}{table-row-color!100}  % row color
   \oldlongtable} {
-    \endoldlongtable
-\global\rownum=0\relax}
+  \endoldlongtable
+  \global\rownum=0\relax}
 
   % Unfortunately the colored cells extend beyond the edge of the 
   % table because pandoc uses @-expressions (@{}) like so: 

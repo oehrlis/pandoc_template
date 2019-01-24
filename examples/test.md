@@ -39,11 +39,30 @@ GRANT tvd_connect TO SOE_KERBEROS;
 
 | ID | Test  | Comment   |
 |----|-------|-----------|
-| 1  | wieso | halt text |
-| 2  | wieso | halt text |
+| 1  | wieso | halt Here's a sentence with a footnote. [^1]|
+| 2  | wieso | halt text [^2] |
 | 3  | wieso | halt text |
 | 4  | wieso | halt text |
 | 5  | wieso | halt text |
+
+
+| Version        | Windows | HPUX | AIX    | Solaris | Linux 64bit |
+|----------------|---------|------|--------|---------|-------------|
+| RDBMS 18.1.0.0 |         | n/a  |        |         |             |
+| RDBMS 18.2.0.0 |         | n/a  | **Ok** |         | ***Ok***    |
+| RDBMS 18.3.0.0 |         | n/a  |        | NOk     |             |
+| RDBMS 18.3.0.0 |         |      |        |         |             |
+| RDBMS 18.1.0.0 |         |      |        |         |             |
+
+
+Here's a sentence with a footnote. [^3]
+
+[^1]: This is the footnote.
+
+[^2]: temehrst.
+
+[^3]: wieso
+
 
 ## Password Verifier
 
