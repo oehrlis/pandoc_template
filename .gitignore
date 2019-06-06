@@ -9,3 +9,6 @@ images/TrivadisLogoSmall-eps-converted-to.pdf
 examples/templates/trivadis.latex
 examples/test_no_listings.pdf
 examples/trivadis.tex
+engineering/*
+examples/test2.pdf
+examples/test2.docx

@@ -9,7 +9,11 @@ listings-disable-line-numbers: true
 titlepage: true
 toc: true
 toc-own-page: true
+lof: true
+lot: true
+thanks: "Hans, Fritz, meiner Frau und der Familie"
 ---
+
 
 # Demos EUS, Kerberos, SSL and OUD a guideline
 
@@ -29,6 +33,7 @@ docker run --detach --name te2018_eusdb \
 ```
 
 Create user and roles
+
 ```sql
 CREATE ROLE tvd_connect;
 GRANT CREATE SESSION TO tvd_connect;
@@ -45,23 +50,27 @@ GRANT tvd_connect TO SOE_KERBEROS;
 | 4  | wieso | halt text |
 | 5  | wieso | halt text |
 
+etwas test dazwischen
 
 | Version        | Windows | HPUX | AIX    | Solaris | Linux 64bit |
 |----------------|---------|------|--------|---------|-------------|
 | RDBMS 18.1.0.0 |         | n/a  |        |         |             |
 | RDBMS 18.2.0.0 |         | n/a  | **Ok** |         | ***Ok***    |
-| RDBMS 18.3.0.0 |         | n/a  |        | NOk     |             |
-| RDBMS 18.3.0.0 |         |      |        |         |             |
-| RDBMS 18.1.0.0 |         |      |        |         |             |
-
+| RDBMS 18.3.0.0 |         | n/a  |        | ![**NOk**](images/nok.png)     |             |
+| RDBMS 18.3.0.0 |         |      |        |![**Ok**](images/ok.png)|             |
+| RDBMS 18.1.0.0 |         |      |![**crash**](images/crash.png)[^4]|         |             |
 
 Here's a sentence with a footnote. [^3]
 
 [^1]: This is the footnote.
-
 [^2]: temehrst.
-
 [^3]: wieso
+[^4]: known issue regarding MOS Note XYZ
+
+ein Bild zum Anschauen
+
+!["Lab Environment"](examples/images/LabEnvironment.png)
+*Abb. 1: Architektur Lab Umgebung*
 
 
 ## Password Verifier
@@ -96,6 +105,17 @@ ALTER USER user_12c IDENTIFIED BY VALUES 'T:C6CE7A88CC5D0E048F32A564D2B6A7
                                         2B8754AE20EE5C309DBA87550E8AA15EAF
                                         2746ED431BF4543D2ABE33E22678';
 ```
+an other table
+
+| #       | Description                                                                                                                                                                                                         | L1 | L2 | L3 | Since |
+|---------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----|----|----|-------|
+| **1.1** | Verify that technical employees (especially the ones tasked with DevOps like activities and architects) receive regular training on security aspects of the technologies they use.                                  |    |    |    | 1.0   |
+| **1.2** | Verify that managers receive regular training on security aspects of the technologies used in their projects.                                                                                                       |    |    |    | 1.0   |
+| **1.3** | Verify that all handled data is classified based on internal data classification standards.                                                                                                                         |    |    |    | 1.0   |
+| **1.4** | Verify that each service/application (can consist of multiple containers) has a security concept which provides information on the security needs of the service/application and how they are or will be addressed. |    |    |    | 1.0   |
+| **1.5** | Verify that identified security risks and vulnerabilities are promptly eliminated (or an exception is granted) and centrally managed according to a predefined risk and vulnerability management process.           |    |    |    | 1.0   |
+| **1.6** | Verify the roles and responsibilities concerning the container infrastructure are defined. This includes e.g. who approves connectivity or decides on allowed base images.                                          |    |    |    | 1.0   |
+
 
 See what we do have in *dba_users*.
 ``` SQL
@@ -422,3 +442,9 @@ Other Information
 
 PL/SQL procedure successfully completed.
 ```
+
+# wass andees
+
+test
+
+## Demos EUS, Kerberos, SSL and OUD a guideline
