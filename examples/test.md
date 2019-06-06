@@ -1,19 +1,3 @@
----
-title: "EUS, Kerberos, SSL and OUD a guideline"
-subtitle: "Demo Scripts, Examples and Exercises"
-author: [Stefan Oehrli]
-date: "2018 November 01"
-tvddocversion: 0.9
-papersize: a4 
-listings-disable-line-numbers: true
-titlepage: true
-toc: true
-toc-own-page: true
-lof: true
-lot: true
-thanks: "Hans, Fritz, meiner Frau und der Familie"
----
-
 
 # Demos EUS, Kerberos, SSL and OUD a guideline
 
@@ -443,7 +427,7 @@ Other Information
 PL/SQL procedure successfully completed.
 ```
 
-# wass andees
+# wass anderes
 
 test
 

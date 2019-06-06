@@ -44,8 +44,10 @@
 \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
 
 
+  \setmainfont[]{Nunito Sans SemiBold}
 
 
+  \setmonofont[Mapping=tex-ansi]{Courier New}
 
 
 
@@ -70,6 +72,8 @@
 
 
 
+\usepackage{titlesec}
+\newcommand{\sectionbreak}{\clearpage}
 \usepackage{hyperref}
 \hypersetup{
       pdftitle={EUS, Kerberos, SSL and OUD a guideline},
@@ -86,22 +90,67 @@
   \usepackage{graphicx}
 
 
-  \usepackage{listings}
-  \newcommand{\passthrough}[1]{#1}
 
 
+  \usepackage{color}
+  \usepackage{fancyvrb}
+  \newcommand{\VerbBar}{|}
+  \newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+  \DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+  % Add ',fontsize=\small' for more characters per line
+  \newenvironment{Shaded}{}{}
+  \newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+  \newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+  \newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.49,0.56,0.16}{#1}}
+  \newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+  \newcommand{\BuiltInTok}[1]{#1}
+  \newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+  \newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{#1}}}
+  \newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+  \newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.53,0.00,0.00}{#1}}
+  \newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+  \newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{#1}}
+  \newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+  \newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.73,0.13,0.13}{\textit{#1}}}
+  \newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+  \newcommand{\ExtensionTok}[1]{#1}
+  \newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+  \newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{#1}}
+  \newcommand{\ImportTok}[1]{#1}
+  \newcommand{\InformationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+  \newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+  \newcommand{\NormalTok}[1]{#1}
+  \newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.40,0.40,0.40}{#1}}
+  \newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{#1}}
+  \newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.74,0.48,0.00}{#1}}
+  \newcommand{\RegionMarkerTok}[1]{#1}
+  \newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+  \newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.73,0.40,0.53}{#1}}
+  \newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+  \newcommand{\VariableTok}[1]{\textcolor[rgb]{0.10,0.09,0.49}{#1}}
+  \newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+  \newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
 
-  \usepackage{longtable,tabularx,booktabs}
+\usepackage{longtable,booktabs,tabularx}
       % Fix footnotes in tables (requires footnote package)
     \IfFileExists{footnote.sty}{\usepackage{footnote}\makesavenoteenv{longtable}}{}
   
+  \usepackage{graphicx,grffile}
+  \makeatletter
+  \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+  \def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+  \makeatother
+  % Scale images if necessary, so that they will not overflow the page
+  % margins by default, and it is still possible to overwrite the defaults
+  % using explicit options in \includegraphics[width, height, ...]{}
+  \setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
 
 
 
 \setlength{\emergencystretch}{3em}  % prevent overfull lines
 \providecommand{\tightlist}{\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 
-  \setcounter{secnumdepth}{0}
+  \setcounter{secnumdepth}{5}
 
       % Redefines (sub)paragraphs to behave more like sections
     \ifx\paragraph\undefined\else
@@ -123,7 +172,7 @@
 
 
 
-  \title{EUS, Kerberos, SSL and OUD a guideline}
+  \title{EUS, Kerberos, SSL and OUD a guideline\thanks{Hans, Fritz, meiner Frau und der Familie}}
 
   \providecommand{\subtitle}[1]{}
   \subtitle{Demo Scripts, Examples and Exercises}
@@ -138,9 +187,7 @@
   \ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
     \usepackage[shorthands=off,main=english]{babel}
       \else
-          % See issue https://github.com/reutenauer/polyglossia/issues/127
-      \renewcommand*\familydefault{\sfdefault}
-        % load polyglossia as late as possible as it *could* call bidi if RTL lang (e.g. Hebrew or Arabic)
+            % load polyglossia as late as possible as it *could* call bidi if RTL lang (e.g. Hebrew or Arabic)
     \usepackage{polyglossia}
     \setmainlanguage[]{english}
       \fi
@@ -177,6 +224,7 @@
 % TOC depth and 
 % section numbering depth
 \setcounter{tocdepth}{3}
+  \setcounter{secnumdepth}{3}
 
 % line spacing
   \usepackage{setspace}
@@ -210,10 +258,6 @@
 % 'default' option sets the default 
 % font family to Source Sans Pro, not \sfdefault.
 %
-  %\usepackage[default]{sourcesanspro}
-  \usepackage[scaled]{uarial}
-  \renewcommand\familydefault{\sfdefault} 
-  \usepackage{sourcecodepro}
 
 % heading color
 \definecolor{heading-color}{RGB}{40,40,40}
@@ -228,14 +272,14 @@
 \author{Stefan Oehrli}
 
 % tables
-  \definecolor{table-row-color}{HTML}{F5F5F5}
-  \definecolor{table-rule-color}{HTML}{999999}
+\definecolor{table-row-color}{gray}{0.8}
+\definecolor{table-rule-color}{gray}{0.8}
 
-  %\arrayrulecolor{black!40}
-  \arrayrulecolor{table-rule-color}     % color of \toprule, \midrule, \bottomrule
-  %\arrayrulecolor{tvdgray2}     % color of \toprule, \midrule, \bottomrule
-  \setlength\heavyrulewidth{0.3ex}      % thickness of \toprule, \bottomrule
-  \renewcommand{\arraystretch}{1.3}     % spacing (padding)
+\arrayrulecolor{black}
+%%\arrayrulecolor{table-rule-color}     % color of \toprule, \midrule, \bottomrule
+%\arrayrulecolor{tvdgray2}     % color of \toprule, \midrule, \bottomrule
+\setlength\heavyrulewidth{0.3ex}      % thickness of \toprule, \bottomrule
+\renewcommand{\arraystretch}{1.3}     % spacing (padding)
 
   % Reset rownum counter so that each table
   % starts with the same row colors.
@@ -243,10 +287,10 @@
   \let\oldlongtable\longtable
   \let\endoldlongtable\endlongtable
   \renewenvironment{longtable}{
-  \rowcolors{3}{}{table-row-color!100}  % row color
+  %\rowcolors{3}{}{table-row-color!100}  % row color
   \oldlongtable} {
-  \endoldlongtable
-  \global\rownum=0\relax}
+    \endoldlongtable
+\global\rownum=0\relax}
 
   % Unfortunately the colored cells extend beyond the edge of the 
   % table because pandoc uses @-expressions (@{}) like so: 
@@ -262,60 +306,6 @@
 \setlength{\emergencystretch}{3em}  % prevent overfull lines
 
 % Listings
-  \lstdefinestyle{eisvogel_listing_style}{
-    language         = java,
-          xleftmargin      = 0.6em,
-      framexleftmargin = 0.4em,
-        backgroundcolor  = \color{listing-background},
-    basicstyle       = \color{listing-text-color}\small\ttfamily{}\linespread{1.15}, % print whole listing small
-    breaklines       = true,
-    frame            = single,
-    framesep         = 0.6mm,
-    rulecolor        = \color{listing-rule},
-    frameround       = ffff,
-    tabsize          = 4,
-    numberstyle      = \color{listing-numbers},
-    aboveskip        = 1.0em,
-    belowcaptionskip = 1.0em,
-    keywordstyle     = \color{listing-keyword}\bfseries,
-    classoffset      = 0,
-    sensitive        = true,
-    identifierstyle  = \color{listing-identifier},
-    commentstyle     = \color{listing-comment},
-    morecomment      = [s][\color{listing-javadoc-comment}]{/**}{*/},
-    stringstyle      = \color{listing-string},
-    showstringspaces = false,
-    escapeinside     = {/*@}{@*/}, % Allow LaTeX inside these special comments
-    literate         =
-    {á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1 {ú}{{\'u}}1
-    {Á}{{\'A}}1 {É}{{\'E}}1 {Í}{{\'I}}1 {Ó}{{\'O}}1 {Ú}{{\'U}}1
-    {à}{{\`a}}1 {è}{{\'e}}1 {ì}{{\`i}}1 {ò}{{\`o}}1 {ù}{{\`u}}1
-    {À}{{\`A}}1 {È}{{\'E}}1 {Ì}{{\`I}}1 {Ò}{{\`O}}1 {Ù}{{\`U}}1
-    {ä}{{\"a}}1 {ë}{{\"e}}1 {ï}{{\"i}}1 {ö}{{\"o}}1 {ü}{{\"u}}1
-    {Ä}{{\"A}}1 {Ë}{{\"E}}1 {Ï}{{\"I}}1 {Ö}{{\"O}}1 {Ü}{{\"U}}1
-    {â}{{\^a}}1 {ê}{{\^e}}1 {î}{{\^i}}1 {ô}{{\^o}}1 {û}{{\^u}}1
-    {Â}{{\^A}}1 {Ê}{{\^E}}1 {Î}{{\^I}}1 {Ô}{{\^O}}1 {Û}{{\^U}}1
-    {œ}{{\oe}}1 {Œ}{{\OE}}1 {æ}{{\ae}}1 {Æ}{{\AE}}1 {ß}{{\ss}}1
-    {ç}{{\c c}}1 {Ç}{{\c C}}1 {ø}{{\o}}1 {å}{{\r a}}1 {Å}{{\r A}}1
-    {€}{{\EUR}}1 {£}{{\pounds}}1 {«}{{\guillemotleft}}1
-    {»}{{\guillemotright}}1 {ñ}{{\~n}}1 {Ñ}{{\~N}}1 {¿}{{?`}}1
-    {…}{{\ldots}}1 {≥}{{>=}}1 {≤}{{<=}}1 {„}{{\glqq}}1 {“}{{\grqq}}1
-    {”}{{''}}1
-  }
-  \lstset{style=eisvogel_listing_style}
-
-  \lstdefinelanguage{XML}{
-    morestring      = [b]",
-    moredelim       = [s][\bfseries\color{listing-keyword}]{<}{\ },
-    moredelim       = [s][\bfseries\color{listing-keyword}]{</}{>},
-    moredelim       = [l][\bfseries\color{listing-keyword}]{/>},
-    moredelim       = [l][\bfseries\color{listing-keyword}]{>},
-    morecomment     = [s]{<?}{?>},
-    morecomment     = [s]{<!--}{-->},
-    commentstyle    = \color{listing-comment},
-    stringstyle     = \color{listing-string},
-    identifierstyle = \color{listing-identifier}
-  }
 
 % header and footer
   \usepackage{fancyhdr}
@@ -324,7 +314,7 @@
   \fancyhead{}
   \fancyfoot{}
 
-  \newcommand*{\TVDLogo}{\includegraphics[width=0.2\textwidth]{/root/.pandoc/images/TVDLogo2019.eps}}
+  \newcommand*{\TVDLogo}{\includegraphics[width=0.2\textwidth]{images/TVDLogo2019.eps}}
 
   \lhead[ \TVDLogo ]{}
   \chead[]{}
@@ -351,14 +341,14 @@
   \end{flushleft}
 
       \begin{flushright}
-      \includegraphics[width=5.12cm, right]{/root/.pandoc/images/TVDLogo2019.eps}
+      \includegraphics[width=5.12cm, right]{images/TVDLogo2019.eps}
     \end{flushright}
   
   \begin{flushright}
     \vfill
     \noindent {\huge \textbf{\textsf{EUS, Kerberos, SSL and OUD a guideline}}}\\
         \bigskip
-    {\Large \textsf{Demo Scripts, Examples and Exercises}}\\
+      {\Large \textsf{Demo Scripts, Examples and Exercises}}\\
     
     \bigskip
 
@@ -398,7 +388,9 @@
               \newpage
           }
   
+  \listoftables
 
+  \listoffigures
 
 \hypertarget{demos-eus-kerberos-ssl-and-oud-a-guideline}{%
 \section{Demos EUS, Kerberos, SSL and OUD a
@@ -410,237 +402,402 @@ copy/past in all environments due to limitations on the line breaks.
 
 Demos are shown on an Oracle 18c Docker based database.
 
-\begin{lstlisting}[language=bash]
-docker run --detach --name te2018_eusdb \
-  --volume /data/docker/volumes/te2018_eusdb:/u01 \
-  -e ORACLE_SID=TE18EUS \
-  -p 1521:1521 -p 5500:5500 \
-  --hostname te2018_eusdb.postgasse.org \
-  --dns 192.168.56.70 \
-  --dns-search postgasse.org \
-  oracle/database:18.3.0.0
-\end{lstlisting}
+\begin{Shaded}
+\begin{Highlighting}[]
+\ExtensionTok{docker}\NormalTok{ run --detach --name te2018_eusdb \textbackslash{}}
+\NormalTok{  --volume /data/docker/volumes/te2018_eusdb:/u01 \textbackslash{}}
+\NormalTok{  -e ORACLE_SID=TE18EUS \textbackslash{}}
+\NormalTok{  -p 1521:1521 -p 5500:5500 \textbackslash{}}
+\NormalTok{  --hostname te2018_eusdb.postgasse.org \textbackslash{}}
+\NormalTok{  --dns 192.168.56.70 \textbackslash{}}
+\NormalTok{  --dns-search postgasse.org \textbackslash{}}
+\NormalTok{  oracle/database:18.3.0.0}
+\end{Highlighting}
+\end{Shaded}
 
 Create user and roles
 
-\begin{lstlisting}[language=SQL]
-CREATE ROLE tvd_connect;
-GRANT CREATE SESSION TO tvd_connect;
-GRANT select ON v_$session TO tvd_connect;
-CREATE USER SOE_KERBEROS IDENTIFIED EXTERNALLY AS 'soe@POSTGASSE.ORG';
-GRANT tvd_connect TO SOE_KERBEROS;
-\end{lstlisting}
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{CREATE} \KeywordTok{ROLE}\NormalTok{ tvd_connect;}
+\KeywordTok{GRANT} \KeywordTok{CREATE} \KeywordTok{SESSION} \KeywordTok{TO}\NormalTok{ tvd_connect;}
+\KeywordTok{GRANT} \KeywordTok{select} \KeywordTok{ON}\NormalTok{ v_$session }\KeywordTok{TO}\NormalTok{ tvd_connect;}
+\KeywordTok{CREATE} \FunctionTok{USER}\NormalTok{ SOE_KERBEROS }\KeywordTok{IDENTIFIED} \KeywordTok{EXTERNALLY} \KeywordTok{AS} \StringTok{'soe@POSTGASSE.ORG'}\NormalTok{;}
+\KeywordTok{GRANT}\NormalTok{ tvd_connect }\KeywordTok{TO}\NormalTok{ SOE_KERBEROS;}
+\end{Highlighting}
+\end{Shaded}
 
 \begin{longtable}[]{@{}lll@{}}
 \toprule
 ID & Test & Comment\tabularnewline
 \midrule
 \endhead
-1 & wieso & halt text\tabularnewline
-2 & wieso & halt text\tabularnewline
+1 & wieso & halt Here's a sentence with a footnote. \footnote{This is
+  the footnote.}\tabularnewline
+2 & wieso & halt text \footnote{temehrst.}\tabularnewline
 3 & wieso & halt text\tabularnewline
 4 & wieso & halt text\tabularnewline
 5 & wieso & halt text\tabularnewline
 \bottomrule
 \end{longtable}
 
+etwas test dazwischen
+
+\begin{longtable}[]{@{}llllll@{}}
+\toprule
+Version & Windows & HPUX & AIX & Solaris & Linux 64bit\tabularnewline
+\midrule
+\endhead
+RDBMS 18.1.0.0 & & n/a & & &\tabularnewline
+RDBMS 18.2.0.0 & & n/a & \textbf{Ok} & &
+\textbf{\emph{Ok}}\tabularnewline
+RDBMS 18.3.0.0 & & n/a & & \includegraphics{images/nok.png}
+&\tabularnewline
+RDBMS 18.3.0.0 & & & & \includegraphics{images/ok.png} &\tabularnewline
+RDBMS 18.1.0.0 & & & \includegraphics{images/crash.png}\footnote{known
+  issue regarding MOS Note XYZ} & &\tabularnewline
+\bottomrule
+\end{longtable}
+
+Here's a sentence with a footnote. \footnote{wieso}
+
+ein Bild zum Anschauen
+
+\includegraphics{examples/images/LabEnvironment.png} \emph{Abb. 1:
+Architektur Lab Umgebung}
+
 \hypertarget{password-verifier}{%
 \subsection{Password Verifier}\label{password-verifier}}
 
 Clean up and remove the old users.
 
-\begin{lstlisting}[language=SQL]
-DROP USER user_10g;
-DROP USER user_11g;
-DROP USER user_12c;
-DROP USER user_all;
-\end{lstlisting}
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{DROP} \FunctionTok{USER}\NormalTok{ user_10g;}
+\KeywordTok{DROP} \FunctionTok{USER}\NormalTok{ user_11g;}
+\KeywordTok{DROP} \FunctionTok{USER}\NormalTok{ user_12c;}
+\KeywordTok{DROP} \FunctionTok{USER}\NormalTok{ user_all;}
+\end{Highlighting}
+\end{Shaded}
 
 Create 4 dedicated test user and grant them \emph{CREATE SESSION}.
 
-\begin{lstlisting}[language=SQL]
-GRANT CREATE SESSION TO user_10g IDENTIFIED BY manager;
-GRANT CREATE SESSION TO user_11g IDENTIFIED BY manager;
-GRANT CREATE SESSION TO user_12c IDENTIFIED BY manager;
-GRANT CREATE SESSION TO user_all IDENTIFIED BY manager;
-\end{lstlisting}
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{GRANT} \KeywordTok{CREATE} \KeywordTok{SESSION} \KeywordTok{TO}\NormalTok{ user_10g }\KeywordTok{IDENTIFIED} \KeywordTok{BY}\NormalTok{ manager;}
+\KeywordTok{GRANT} \KeywordTok{CREATE} \KeywordTok{SESSION} \KeywordTok{TO}\NormalTok{ user_11g }\KeywordTok{IDENTIFIED} \KeywordTok{BY}\NormalTok{ manager;}
+\KeywordTok{GRANT} \KeywordTok{CREATE} \KeywordTok{SESSION} \KeywordTok{TO}\NormalTok{ user_12c }\KeywordTok{IDENTIFIED} \KeywordTok{BY}\NormalTok{ manager;}
+\KeywordTok{GRANT} \KeywordTok{CREATE} \KeywordTok{SESSION} \KeywordTok{TO}\NormalTok{ user_all }\KeywordTok{IDENTIFIED} \KeywordTok{BY}\NormalTok{ manager;}
+\end{Highlighting}
+\end{Shaded}
 
 Reset all passwords using \emph{IDENTIFIED BY VALUES} to explicitly set
 a particular password verifier.
 
-\begin{lstlisting}[language=SQL]
-ALTER USER user_10g IDENTIFIED BY VALUES '808E79166793CFD1';
-ALTER USER user_11g IDENTIFIED BY VALUES 'S:22D8239017006EBDE054108BF367F
-                                        225B5E731D12C91A3BEB31FA28D4A38';
-ALTER USER user_12c IDENTIFIED BY VALUES 'T:C6CE7A88CC5D0E048F32A564D2B6A7
-                                        BDC78A2092184F28D13A90FC071F804E5E
-                                        A09D4D2A3749AA79BFD0A90D18DEC5788D
-                                        2B8754AE20EE5C309DBA87550E8AA15EAF
-                                        2746ED431BF4543D2ABE33E22678';
-\end{lstlisting}
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ALTER} \FunctionTok{USER}\NormalTok{ user_10g }\KeywordTok{IDENTIFIED} \KeywordTok{BY} \KeywordTok{VALUES} \StringTok{'808E79166793CFD1'}\NormalTok{;}
+\KeywordTok{ALTER} \FunctionTok{USER}\NormalTok{ user_11g }\KeywordTok{IDENTIFIED} \KeywordTok{BY} \KeywordTok{VALUES} \StringTok{'S:22D8239017006EBDE054108BF367F}
+\StringTok{                                        225B5E731D12C91A3BEB31FA28D4A38'}\NormalTok{;}
+\KeywordTok{ALTER} \FunctionTok{USER}\NormalTok{ user_12c }\KeywordTok{IDENTIFIED} \KeywordTok{BY} \KeywordTok{VALUES} \StringTok{'T:C6CE7A88CC5D0E048F32A564D2B6A7}
+\StringTok{                                        BDC78A2092184F28D13A90FC071F804E5E}
+\StringTok{                                        A09D4D2A3749AA79BFD0A90D18DEC5788D}
+\StringTok{                                        2B8754AE20EE5C309DBA87550E8AA15EAF}
+\StringTok{                                        2746ED431BF4543D2ABE33E22678'}\NormalTok{;}
+\end{Highlighting}
+\end{Shaded}
+
+an other table
+
+\begin{longtable}[]{@{}llllll@{}}
+\toprule
+\begin{minipage}[b]{0.03\columnwidth}\raggedright
+\#\strut
+\end{minipage} & \begin{minipage}[b]{0.74\columnwidth}\raggedright
+Description\strut
+\end{minipage} & \begin{minipage}[b]{0.01\columnwidth}\raggedright
+L1\strut
+\end{minipage} & \begin{minipage}[b]{0.01\columnwidth}\raggedright
+L2\strut
+\end{minipage} & \begin{minipage}[b]{0.01\columnwidth}\raggedright
+L3\strut
+\end{minipage} & \begin{minipage}[b]{0.02\columnwidth}\raggedright
+Since\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.03\columnwidth}\raggedright
+\textbf{1.1}\strut
+\end{minipage} & \begin{minipage}[t]{0.74\columnwidth}\raggedright
+Verify that technical employees (especially the ones tasked with DevOps
+like activities and architects) receive regular training on security
+aspects of the technologies they use.\strut
+\end{minipage} & \begin{minipage}[t]{0.01\columnwidth}\raggedright
+\strut
+\end{minipage} & \begin{minipage}[t]{0.01\columnwidth}\raggedright
+\strut
+\end{minipage} & \begin{minipage}[t]{0.01\columnwidth}\raggedright
+\strut
+\end{minipage} & \begin{minipage}[t]{0.02\columnwidth}\raggedright
+1.0\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.03\columnwidth}\raggedright
+\textbf{1.2}\strut
+\end{minipage} & \begin{minipage}[t]{0.74\columnwidth}\raggedright
+Verify that managers receive regular training on security aspects of the
+technologies used in their projects.\strut
+\end{minipage} & \begin{minipage}[t]{0.01\columnwidth}\raggedright
+\strut
+\end{minipage} & \begin{minipage}[t]{0.01\columnwidth}\raggedright
+\strut
+\end{minipage} & \begin{minipage}[t]{0.01\columnwidth}\raggedright
+\strut
+\end{minipage} & \begin{minipage}[t]{0.02\columnwidth}\raggedright
+1.0\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.03\columnwidth}\raggedright
+\textbf{1.3}\strut
+\end{minipage} & \begin{minipage}[t]{0.74\columnwidth}\raggedright
+Verify that all handled data is classified based on internal data
+classification standards.\strut
+\end{minipage} & \begin{minipage}[t]{0.01\columnwidth}\raggedright
+\strut
+\end{minipage} & \begin{minipage}[t]{0.01\columnwidth}\raggedright
+\strut
+\end{minipage} & \begin{minipage}[t]{0.01\columnwidth}\raggedright
+\strut
+\end{minipage} & \begin{minipage}[t]{0.02\columnwidth}\raggedright
+1.0\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.03\columnwidth}\raggedright
+\textbf{1.4}\strut
+\end{minipage} & \begin{minipage}[t]{0.74\columnwidth}\raggedright
+Verify that each service/application (can consist of multiple
+containers) has a security concept which provides information on the
+security needs of the service/application and how they are or will be
+addressed.\strut
+\end{minipage} & \begin{minipage}[t]{0.01\columnwidth}\raggedright
+\strut
+\end{minipage} & \begin{minipage}[t]{0.01\columnwidth}\raggedright
+\strut
+\end{minipage} & \begin{minipage}[t]{0.01\columnwidth}\raggedright
+\strut
+\end{minipage} & \begin{minipage}[t]{0.02\columnwidth}\raggedright
+1.0\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.03\columnwidth}\raggedright
+\textbf{1.5}\strut
+\end{minipage} & \begin{minipage}[t]{0.74\columnwidth}\raggedright
+Verify that identified security risks and vulnerabilities are promptly
+eliminated (or an exception is granted) and centrally managed according
+to a predefined risk and vulnerability management process.\strut
+\end{minipage} & \begin{minipage}[t]{0.01\columnwidth}\raggedright
+\strut
+\end{minipage} & \begin{minipage}[t]{0.01\columnwidth}\raggedright
+\strut
+\end{minipage} & \begin{minipage}[t]{0.01\columnwidth}\raggedright
+\strut
+\end{minipage} & \begin{minipage}[t]{0.02\columnwidth}\raggedright
+1.0\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.03\columnwidth}\raggedright
+\textbf{1.6}\strut
+\end{minipage} & \begin{minipage}[t]{0.74\columnwidth}\raggedright
+Verify the roles and responsibilities concerning the container
+infrastructure are defined. This includes e.g.~who approves connectivity
+or decides on allowed base images.\strut
+\end{minipage} & \begin{minipage}[t]{0.01\columnwidth}\raggedright
+\strut
+\end{minipage} & \begin{minipage}[t]{0.01\columnwidth}\raggedright
+\strut
+\end{minipage} & \begin{minipage}[t]{0.01\columnwidth}\raggedright
+\strut
+\end{minipage} & \begin{minipage}[t]{0.02\columnwidth}\raggedright
+1.0\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
 
 See what we do have in \emph{dba\_users}.
 
-\begin{lstlisting}[language=SQL]
-set linesize 160 pagesize 200
-col username for a25
-SELECT username,password_versions FROM dba_users WHERE username LIKE 'USER_%' ORDER BY 1;
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{set}\NormalTok{ linesize }\DecValTok{160}\NormalTok{ pagesize }\DecValTok{200}
+\NormalTok{col username }\ControlFlowTok{for}\NormalTok{ a25}
+\KeywordTok{SELECT}\NormalTok{ username,password_versions }\KeywordTok{FROM}\NormalTok{ dba_users }\KeywordTok{WHERE}\NormalTok{ username }\KeywordTok{LIKE} \StringTok{'USER_%'} \KeywordTok{ORDER} \KeywordTok{BY} \DecValTok{1}\NormalTok{;}
 
-USERNAME          PASSWORD_VERSIONS
-------------------------- -----------------
-USER_10G          10G
-USER_11G          11G
-USER_12C          12C
-USER_ALL          10G 11G 12C
-\end{lstlisting}
+\NormalTok{USERNAME          PASSWORD_VERSIONS}
+\CommentTok{------------------------- -----------------}
+\NormalTok{USER_10G          10G}
+\NormalTok{USER_11G          11G}
+\NormalTok{USER_12C          12C}
+\NormalTok{USER_ALL          10G 11G 12C}
+\end{Highlighting}
+\end{Shaded}
 
 See what we do have in \emph{user\$}.
 
-\begin{lstlisting}[language=SQL]
-set linesize 160 pagesize 200
-col name for a20
-col password for a20
-col spare4 for a65
-SELECT name,password,spare4 FROM user$ 
-    WHERE name LIKE 'USER_%' ORDER BY 1;
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{set}\NormalTok{ linesize }\DecValTok{160}\NormalTok{ pagesize }\DecValTok{200}
+\NormalTok{col name }\ControlFlowTok{for}\NormalTok{ a20}
+\NormalTok{col }\KeywordTok{password} \ControlFlowTok{for}\NormalTok{ a20}
+\NormalTok{col spare4 }\ControlFlowTok{for}\NormalTok{ a65}
+\KeywordTok{SELECT}\NormalTok{ name,}\KeywordTok{password}\NormalTok{,spare4 }\KeywordTok{FROM}\NormalTok{ user$ }
+    \KeywordTok{WHERE}\NormalTok{ name }\KeywordTok{LIKE} \StringTok{'USER_%'} \KeywordTok{ORDER} \KeywordTok{BY} \DecValTok{1}\NormalTok{;}
 
-NAME       PASSWORD          SPARE4
----------- ----------------- --------------------------------------------
-USER_10G   808E79166793CFD1
-USER_11G                     S:22D8239017006EBDE054108BF367F225B5E731D12C
-                             91A3BEB31FA28D4A38
-USER_12C                     T:C6CE7A88CC5D0E048F32A564D2B6A7BDC78A209218
-                             4F28D13A90FC071F804E5EA09D4D2A3749AA79BFD0A9
-                             0D18DEC5788D2B8754AE20EE5C309DBA87550E8AA15E
-                             AF2746ED431BF4543D2ABE33E22678
+\NormalTok{NAME       }\KeywordTok{PASSWORD}\NormalTok{          SPARE4}
+\CommentTok{---------- ----------------- --------------------------------------------}
+\NormalTok{USER_10G   }\FloatTok{808E79166793}\NormalTok{CFD1}
+\NormalTok{USER_11G                     S}\CharTok{:22D8239017006EBDE054108BF367F225B5E731D12C}
+\NormalTok{                             91A3BEB31FA28D4A38}
+\NormalTok{USER_12C                     T}\CharTok{:C6CE7A88CC5D0E048F32A564D2B6A7BDC78A209218}
+\NormalTok{                             4F28D13A90FC071F804E5EA09D4D2A3749AA79BFD0A9}
+\NormalTok{                             0D18DEC5788D2B8754AE20EE5C309DBA87550E8AA15E}
+\NormalTok{                             AF2746ED431BF4543D2ABE33E22678}
 
-USER_ALL   BFD595809B6149CB  S:804A87EA761505458FDED9B057A77FCF53DA3DDBD6
-                             EDB168501EDF5C0B10;T:7950DF0D54DEA24F1764EBC
-                             34A262D784E18F4292510B8A2E0D0F7ADFEC1C6F1E22
-                             D841A9D91BAF0B9B05632F6D4898C6F4AE1EEF150933
-                             9EBCE261A1F36E834A5E2DD9F1E772AB2D6413CCAB5E
-                             B0B23
-\end{lstlisting}
+\NormalTok{USER_ALL   BFD595809B6149CB  S}\CharTok{:804A87EA761505458FDED9B057A77FCF53DA3DDBD6}
+\NormalTok{                             EDB168501EDF5C0B10;T}\CharTok{:7950DF0D54DEA24F1764EBC}
+\NormalTok{                             34A262D784E18F4292510B8A2E0D0F7ADFEC1C6F1E22}
+\NormalTok{                             D841A9D91BAF0B9B05632F6D4898C6F4AE1EEF150933}
+\NormalTok{                             9EBCE261A1F36E834A5E2DD9F1E772AB2D6413CCAB5E}
+\NormalTok{                             B0B23}
+\end{Highlighting}
+\end{Shaded}
 
 Check what we do have in \emph{sqlnet.ora}.
 
-\begin{lstlisting}[language=SQL]
-host grep -i ALLOWED /u00/app/oracle/network/admin/sqlnet.ora
-#SQLNET.ALLOWED_LOGON_VERSION_CLIENT=12a
-SQLNET.ALLOWED_LOGON_VERSION_SERVER=11
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{host grep }\OperatorTok{-}\NormalTok{i ALLOWED }\OperatorTok{/}\NormalTok{u00}\OperatorTok{/}\NormalTok{app}\OperatorTok{/}\NormalTok{oracle}\OperatorTok{/}\KeywordTok{network}\OperatorTok{/}\KeywordTok{admin}\OperatorTok{/}\NormalTok{sqlnet.ora}
+\NormalTok{#SQLNET.ALLOWED_LOGON_VERSION_CLIENT}\OperatorTok{=}\NormalTok{12a}
+\NormalTok{SQLNET.ALLOWED_LOGON_VERSION_SERVER}\OperatorTok{=}\DecValTok{11}
 
-host sed -i "s|^SQLNET.ALLOWED_LOGON_VERSION_SERVER.*|SQLNET.ALLOWED_LOGON_VERSION_SERVER=11|" \
-    /u00/app/oracle/network/admin/sqlnet.ora
-host sed -i "s|^SQLNET.ALLOWED_LOGON_VERSION_SERVER.*|SQLNET.ALLOWED_LOGON_VERSION_SERVER=12|" \
-    /u00/app/oracle/network/admin/sqlnet.ora
-host sed -i "s|^SQLNET.ALLOWED_LOGON_VERSION_SERVER.*|SQLNET.ALLOWED_LOGON_VERSION_SERVER=12a|" \
-    /u00/app/oracle/network/admin/sqlnet.ora
-\end{lstlisting}
+\NormalTok{host sed }\OperatorTok{-}\NormalTok{i }\OtherTok{"s|^SQLNET.ALLOWED_LOGON_VERSION_SERVER.*|SQLNET.ALLOWED_LOGON_VERSION_SERVER=11|"}\NormalTok{ \textbackslash{}}
+    \OperatorTok{/}\NormalTok{u00}\OperatorTok{/}\NormalTok{app}\OperatorTok{/}\NormalTok{oracle}\OperatorTok{/}\KeywordTok{network}\OperatorTok{/}\KeywordTok{admin}\OperatorTok{/}\NormalTok{sqlnet.ora}
+\NormalTok{host sed }\OperatorTok{-}\NormalTok{i }\OtherTok{"s|^SQLNET.ALLOWED_LOGON_VERSION_SERVER.*|SQLNET.ALLOWED_LOGON_VERSION_SERVER=12|"}\NormalTok{ \textbackslash{}}
+    \OperatorTok{/}\NormalTok{u00}\OperatorTok{/}\NormalTok{app}\OperatorTok{/}\NormalTok{oracle}\OperatorTok{/}\KeywordTok{network}\OperatorTok{/}\KeywordTok{admin}\OperatorTok{/}\NormalTok{sqlnet.ora}
+\NormalTok{host sed }\OperatorTok{-}\NormalTok{i }\OtherTok{"s|^SQLNET.ALLOWED_LOGON_VERSION_SERVER.*|SQLNET.ALLOWED_LOGON_VERSION_SERVER=12a|"}\NormalTok{ \textbackslash{}}
+    \OperatorTok{/}\NormalTok{u00}\OperatorTok{/}\NormalTok{app}\OperatorTok{/}\NormalTok{oracle}\OperatorTok{/}\KeywordTok{network}\OperatorTok{/}\KeywordTok{admin}\OperatorTok{/}\NormalTok{sqlnet.ora}
+\end{Highlighting}
+\end{Shaded}
 
 Do some login tests
 
-\begin{lstlisting}[language=SQL]
-SQL> connect user_10g/manager
-ERROR:
-ORA-01017: invalid username/password; logon denied
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{SQL}\OperatorTok{>} \KeywordTok{connect}\NormalTok{ user_10g}\OperatorTok{/}\NormalTok{manager}
+\NormalTok{ERROR:}
+\NormalTok{ORA}\OperatorTok{-}\DecValTok{01017}\NormalTok{: invalid username}\OperatorTok{/}\KeywordTok{password}\NormalTok{; }\KeywordTok{logon}\NormalTok{ denied}
 
 
-Warning: You are no longer connected to ORACLE.
+\NormalTok{Warning: You are }\KeywordTok{no}\NormalTok{ longer connected }\KeywordTok{to}\NormalTok{ ORACLE.}
 
-connect user_11g/manager
-\end{lstlisting}
+\KeywordTok{connect}\NormalTok{ user_11g}\OperatorTok{/}\NormalTok{manager}
+\end{Highlighting}
+\end{Shaded}
 
 \hypertarget{setup-kerberos}{%
 \subsection{Setup Kerberos}\label{setup-kerberos}}
 
 Check the configuration scripts in \emph{sqlnet.ora}.
 
-\begin{lstlisting}[language=bash]
-grep -i -A 11 -B 2 "Kerberos Configuration" $TNS_ADMIN/sqlnet.ora
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{grep}\NormalTok{ -i -A 11 -B 2 }\StringTok{"Kerberos Configuration"} \VariableTok{$TNS_ADMIN}\NormalTok{/sqlnet.ora}
 
-##########################################################################
-# Kerberos Configuration
-##########################################################################
-SQLNET.AUTHENTICATION_SERVICES = (BEQ,KERBEROS5)
-#SQLNET.AUTHENTICATION_SERVICES = (ALL)
-SQLNET.FALLBACK_AUTHENTICATION = TRUE
-SQLNET.KERBEROS5_KEYTAB = /u00/app/oracle/network/admin/urania.keytab
-SQLNET.KERBEROS5_REALMS = /u00/app/oracle/network/admin/krb.realms
-SQLNET.KERBEROS5_CC_NAME = /u00/app/oracle/network/admin/krbcache
-SQLNET.KERBEROS5_CONF = /u00/app/oracle/network/admin/krb5.conf
-SQLNET.KERBEROS5_CONF_MIT=TRUE
-SQLNET.AUTHENTICATION_KERBEROS5_SERVICE = oracle
-\end{lstlisting}
+\CommentTok{##########################################################################}
+\CommentTok{# Kerberos Configuration}
+\CommentTok{##########################################################################}
+\ExtensionTok{SQLNET.AUTHENTICATION_SERVICES}\NormalTok{ = (BEQ,KERBEROS5)}
+\CommentTok{#SQLNET.AUTHENTICATION_SERVICES = (ALL)}
+\ExtensionTok{SQLNET.FALLBACK_AUTHENTICATION}\NormalTok{ = TRUE}
+\ExtensionTok{SQLNET.KERBEROS5_KEYTAB}\NormalTok{ = /u00/app/oracle/network/admin/urania.keytab}
+\ExtensionTok{SQLNET.KERBEROS5_REALMS}\NormalTok{ = /u00/app/oracle/network/admin/krb.realms}
+\ExtensionTok{SQLNET.KERBEROS5_CC_NAME}\NormalTok{ = /u00/app/oracle/network/admin/krbcache}
+\ExtensionTok{SQLNET.KERBEROS5_CONF}\NormalTok{ = /u00/app/oracle/network/admin/krb5.conf}
+\ExtensionTok{SQLNET.KERBEROS5_CONF_MIT}\NormalTok{=TRUE}
+\ExtensionTok{SQLNET.AUTHENTICATION_KERBEROS5_SERVICE}\NormalTok{ = oracle}
+\end{Highlighting}
+\end{Shaded}
 
 Check the configuration scripts in \emph{krb5.conf}.
 
-\begin{lstlisting}[language=bash]
-cat $TNS_ADMIN/krb5.conf
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat} \VariableTok{$TNS_ADMIN}\NormalTok{/krb5.conf}
 
-####krb5.conf DB Server
-[logging]
-default = FILE:/u00/app/oracle/network/log/krb5lib.log
-kdc=FILE:/u00/app/oracle/network/log/krb5kdc.log
-admin_server=FILE:/u00/app/oracle/network/log/kadmind.log
+\CommentTok{####krb5.conf DB Server}
+\NormalTok{[}\ExtensionTok{logging}\NormalTok{]}
+\ExtensionTok{default}\NormalTok{ = FILE:/u00/app/oracle/network/log/krb5lib.log}
+\VariableTok{kdc=}\NormalTok{FILE:/u00/app/oracle/network/log/krb5kdc.log}
+\VariableTok{admin_server=}\NormalTok{FILE:/u00/app/oracle/network/log/kadmind.log}
 
-[libdefaults]
- default_realm = POSTGASSE.ORG
- clockskew=300
- ticket_lifetime = 24h
- renew_lifetime = 7d
- forwardable = true
+\NormalTok{[}\ExtensionTok{libdefaults}\NormalTok{]}
+ \ExtensionTok{default_realm}\NormalTok{ = POSTGASSE.ORG}
+ \VariableTok{clockskew=}\NormalTok{300}
+ \ExtensionTok{ticket_lifetime}\NormalTok{ = 24h}
+ \ExtensionTok{renew_lifetime}\NormalTok{ = 7d}
+ \ExtensionTok{forwardable}\NormalTok{ = true}
 
-[realms]
- POSTGASSE.ORG = {
-   kdc = mneme.postgasse.org
-   admin_server = mneme.postgasse.org
-}
+\NormalTok{[}\ExtensionTok{realms}\NormalTok{]}
+ \ExtensionTok{POSTGASSE.ORG}\NormalTok{ = \{}
+   \ExtensionTok{kdc}\NormalTok{ = mneme.postgasse.org}
+   \ExtensionTok{admin_server}\NormalTok{ = mneme.postgasse.org}
+\NormalTok{\}}
 
-[domain_realm]
-.postgasse.org = POSTGASSE.ORG
-postgasse.org = POSTGASSE.ORG
-\end{lstlisting}
+\NormalTok{[}\ExtensionTok{domain_realm}\NormalTok{]}
+\ExtensionTok{.postgasse.org}\NormalTok{ = POSTGASSE.ORG}
+\ExtensionTok{postgasse.org}\NormalTok{ = POSTGASSE.ORG}
+\end{Highlighting}
+\end{Shaded}
 
 lookup hostname's and check DNS configuration
 
-\begin{lstlisting}[language=bash]
-cat /etc/resolv.conf
-# Generated by NetworkManager
-search aux.lan postgasse.org
-nameserver 192.168.56.70
-nameserver 10.154.0.1
-\end{lstlisting}
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{ /etc/resolv.conf}
+\CommentTok{# Generated by NetworkManager}
+\ExtensionTok{search}\NormalTok{ aux.lan postgasse.org}
+\ExtensionTok{nameserver}\NormalTok{ 192.168.56.70}
+\ExtensionTok{nameserver}\NormalTok{ 10.154.0.1}
+\end{Highlighting}
+\end{Shaded}
 
-\begin{lstlisting}[language=bash]
-nslookup mneme.postgasse.org
-Server:     192.168.56.70
-Address:    192.168.56.70#53
+\begin{Shaded}
+\begin{Highlighting}[]
+\ExtensionTok{nslookup}\NormalTok{ mneme.postgasse.org}
+\ExtensionTok{Server}\NormalTok{:     192.168.56.70}
+\ExtensionTok{Address}\NormalTok{:    192.168.56.70#53}
 
-Name:   mneme.postgasse.org
-Address: 192.168.56.70
-Name:   mneme.postgasse.org
-Address: 10.0.2.19
-\end{lstlisting}
+\ExtensionTok{Name}\NormalTok{:   mneme.postgasse.org}
+\ExtensionTok{Address}\NormalTok{: 192.168.56.70}
+\ExtensionTok{Name}\NormalTok{:   mneme.postgasse.org}
+\ExtensionTok{Address}\NormalTok{: 10.0.2.19}
+\end{Highlighting}
+\end{Shaded}
 
-\begin{lstlisting}[language=bash]
-nslookup te2018_eusdb.postgasse.org
-Server:     192.168.56.70
-Address:    192.168.56.70#53
+\begin{Shaded}
+\begin{Highlighting}[]
+\ExtensionTok{nslookup}\NormalTok{ te2018_eusdb.postgasse.org}
+\ExtensionTok{Server}\NormalTok{:     192.168.56.70}
+\ExtensionTok{Address}\NormalTok{:    192.168.56.70#53}
 
-Name:   urania.postgasse.org
-Address: 192.168.56.90
-\end{lstlisting}
+\ExtensionTok{Name}\NormalTok{:   urania.postgasse.org}
+\ExtensionTok{Address}\NormalTok{: 192.168.56.90}
+\end{Highlighting}
+\end{Shaded}
 
 Create a service principle in MS AD
 
 Create the keytab file
 
-\begin{lstlisting}
+\begin{verbatim}
 ktpass.exe -princ oracle/te2018_eusdb.postgasse.org@POSTGASSE.ORG \
     -mapuser te2018_eusdb.postgasse.org -pass manager \
     -crypto ALL -ptype KRB5_NT_PRINCIPAL \
     -out C:\u00\app\oracle\network\te2018_eusdb.keytab
-\end{lstlisting}
+\end{verbatim}
 
 Connect as kerberos User \#\# Setup OUD AD Proxy
 
@@ -670,30 +827,34 @@ To type less you just have to define a few environment variables.
 Basically you will define the local Docker volume path, container name,
 container hostname and the OUD instance name.
 
-\begin{lstlisting}[language=bash]
-export MY_CONTAINER="te2018_oud"
-export MY_VOLUME_PATH="/data/docker/volumes/$MY_CONTAINER"
-export MY_HOST="$MY_CONTAINER.postgasse.org"
-export MY_OUD_INSTANCE="oud_adproxy"
-\end{lstlisting}
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{export} \VariableTok{MY_CONTAINER=}\StringTok{"te2018_oud"}
+\BuiltInTok{export} \VariableTok{MY_VOLUME_PATH=}\StringTok{"/data/docker/volumes/}\VariableTok{$MY_CONTAINER}\StringTok{"}
+\BuiltInTok{export} \VariableTok{MY_HOST=}\StringTok{"}\VariableTok{$MY_CONTAINER}\StringTok{.postgasse.org"}
+\BuiltInTok{export} \VariableTok{MY_OUD_INSTANCE=}\StringTok{"oud_adproxy"}
+\end{Highlighting}
+\end{Shaded}
 
 \hypertarget{create-the-container}{%
 \subsubsection{Create the container}\label{create-the-container}}
 
 Just create a container without starting it. Adjust ports, base DN etc.
 
-\begin{lstlisting}[language=bash]
-docker container create --name $MY_CONTAINER \
-    --volume $MY_VOLUME_PATH:/u01 \
-    -p 1389:1389 -p 1636:1636 -p 4444:4444 \
-    -e OUD_CUSTOM=TRUE \
-    -e BASEDN="dc=postgasse,dc=org" \
-    -e OUD_INSTANCE=$MY_OUD_INSTANCE \
-    --hostname $MY_HOST \
-    --dns 192.168.56.70 \
-    --dns-search postgasse.org \
-    oracle/oud:12.2.1.3.180626
-\end{lstlisting}
+\begin{Shaded}
+\begin{Highlighting}[]
+\ExtensionTok{docker}\NormalTok{ container create --name }\VariableTok{$MY_CONTAINER}\NormalTok{ \textbackslash{}}
+\NormalTok{    --volume }\VariableTok{$MY_VOLUME_PATH}\NormalTok{:/u01 \textbackslash{}}
+\NormalTok{    -p 1389:1389 -p 1636:1636 -p 4444:4444 \textbackslash{}}
+\NormalTok{    -e OUD_CUSTOM=TRUE \textbackslash{}}
+\NormalTok{    -e BASEDN=}\StringTok{"dc=postgasse,dc=org"}\NormalTok{ \textbackslash{}}
+\NormalTok{    -e OUD_INSTANCE=}\VariableTok{$MY_OUD_INSTANCE}\NormalTok{ \textbackslash{}}
+\NormalTok{    --hostname }\VariableTok{$MY_HOST}\NormalTok{ \textbackslash{}}
+\NormalTok{    --dns 192.168.56.70 \textbackslash{}}
+\NormalTok{    --dns-search postgasse.org \textbackslash{}}
+\NormalTok{    oracle/oud:12.2.1.3.180626}
+\end{Highlighting}
+\end{Shaded}
 
 Get and configure your create scripts out of the container from the OUD
 base. Alternatively you may also get it directly from GitHub
@@ -701,131 +862,158 @@ base. Alternatively you may also get it directly from GitHub
 
 Get the OUD EUS AD templates from the Docker container created before.
 
-\begin{lstlisting}[language=bash]
-mkdir -p $MY_VOLUME_PATH/admin/$MY_OUD_INSTANCE
-docker cp \
-    $(docker ps -aqf "name=$MY_CONTAINER"):/u00/app/oracle/local/oudbase/templates/create/oud12c_eus_ad_proxy \
-    $MY_VOLUME_PATH/admin/$MY_OUD_INSTANCE
-mv $MY_VOLUME_PATH/admin/$MY_OUD_INSTANCE/oud12c_eus_ad_proxy $MY_VOLUME_PATH/admin/$MY_OUD_INSTANCE/create
-mkdir -p $MY_VOLUME_PATH/admin/$MY_OUD_INSTANCE/etc
-echo "manager" >$MY_VOLUME_PATH/admin/$MY_OUD_INSTANCE/etc/${MY_OUD_INSTANCE}_pwd.txt
-\end{lstlisting}
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{mkdir}\NormalTok{ -p }\VariableTok{$MY_VOLUME_PATH}\NormalTok{/admin/}\VariableTok{$MY_OUD_INSTANCE}
+\ExtensionTok{docker}\NormalTok{ cp \textbackslash{}}
+    \VariableTok{$(}\ExtensionTok{docker}\NormalTok{ ps -aqf }\StringTok{"name=}\VariableTok{$MY_CONTAINER}\StringTok{"}\VariableTok{)}\NormalTok{:/u00/app/oracle/local/oudbase/templates/create/oud12c_eus_ad_proxy \textbackslash{}}
+    \VariableTok{$MY_VOLUME_PATH}\NormalTok{/admin/}\VariableTok{$MY_OUD_INSTANCE}
+\FunctionTok{mv} \VariableTok{$MY_VOLUME_PATH}\NormalTok{/admin/}\VariableTok{$MY_OUD_INSTANCE}\NormalTok{/oud12c_eus_ad_proxy }\VariableTok{$MY_VOLUME_PATH}\NormalTok{/admin/}\VariableTok{$MY_OUD_INSTANCE}\NormalTok{/create}
+\FunctionTok{mkdir}\NormalTok{ -p }\VariableTok{$MY_VOLUME_PATH}\NormalTok{/admin/}\VariableTok{$MY_OUD_INSTANCE}\NormalTok{/etc}
+\BuiltInTok{echo} \StringTok{"manager"} \OperatorTok{>}\VariableTok{$MY_VOLUME_PATH}\NormalTok{/admin/}\VariableTok{$MY_OUD_INSTANCE}\NormalTok{/etc/}\VariableTok{$\{MY_OUD_INSTANCE\}}\NormalTok{_pwd.txt}
+\end{Highlighting}
+\end{Shaded}
 
 Update the \emph{00\_init\_environment} according to your environment.
 In particular the variables AD\_PDC\_HOST,AD\_PDC\_PORT, AD\_PDC\_USER,
 AD\_PDC\_PASSWORD and BASEDN, GROUP\_DN, USER\_DN
 
-\begin{lstlisting}[language=bash]
-vi $MY_VOLUME_PATH/admin/$MY_OUD_INSTANCE/create/00_init_environment
+\begin{Shaded}
+\begin{Highlighting}[]
+\ExtensionTok{vi} \VariableTok{$MY_VOLUME_PATH}\NormalTok{/admin/}\VariableTok{$MY_OUD_INSTANCE}\NormalTok{/create/00_init_environment}
 
-sed -i -e "s|<PDC_HOSTNAME>|mneme.postgasse.org|g" \
-    $MY_VOLUME_PATH/admin/$MY_OUD_INSTANCE/create/00_init_environment
-sed -i -e 's|<USER_DN>|CN=OUD\\ Admin,CN=Users,dc=postgasse,dc=org|g' \
-    $MY_VOLUME_PATH/admin/$MY_OUD_INSTANCE/create/00_init_environment
-sed -i -e "s|<PASSWORD>|manager|g" \
-    $MY_VOLUME_PATH/admin/$MY_OUD_INSTANCE/create/00_init_environment
+\FunctionTok{sed}\NormalTok{ -i -e }\StringTok{"s|<PDC_HOSTNAME>|mneme.postgasse.org|g"}\NormalTok{ \textbackslash{}}
+    \VariableTok{$MY_VOLUME_PATH}\NormalTok{/admin/}\VariableTok{$MY_OUD_INSTANCE}\NormalTok{/create/00_init_environment}
+\FunctionTok{sed}\NormalTok{ -i -e }\StringTok{'s|<USER_DN>|CN=OUD\textbackslash{}\textbackslash{} Admin,CN=Users,dc=postgasse,dc=org|g'}\NormalTok{ \textbackslash{}}
+    \VariableTok{$MY_VOLUME_PATH}\NormalTok{/admin/}\VariableTok{$MY_OUD_INSTANCE}\NormalTok{/create/00_init_environment}
+\FunctionTok{sed}\NormalTok{ -i -e }\StringTok{"s|<PASSWORD>|manager|g"}\NormalTok{ \textbackslash{}}
+    \VariableTok{$MY_VOLUME_PATH}\NormalTok{/admin/}\VariableTok{$MY_OUD_INSTANCE}\NormalTok{/create/00_init_environment}
 
-sed -i -e 's|^export BASEDN.*|export BASEDN="dc=postgasse,dc=org"|g' \
-    $MY_VOLUME_PATH/admin/$MY_OUD_INSTANCE/create/00_init_environment
-sed -i -e 's|^export GROUP_OU.*|export GROUP_OU="ou=Groups,dc=postgasse,dc=org"|g' \
-    $MY_VOLUME_PATH/admin/$MY_OUD_INSTANCE/create/00_init_environment
-sed -i -e 's|^export USER_OU.*|export USER_OU="ou=People,dc=postgasse,dc=org"|g' \
-    $MY_VOLUME_PATH/admin/$MY_OUD_INSTANCE/create/00_init_environment
-sed -i -e "s|dc=example,dc=com|dc=postgasse,dc=org|g" \
-    $MY_VOLUME_PATH/admin/$MY_OUD_INSTANCE/create/00_init_environment
+\FunctionTok{sed}\NormalTok{ -i -e }\StringTok{'s|^export BASEDN.*|export BASEDN="dc=postgasse,dc=org"|g'}\NormalTok{ \textbackslash{}}
+    \VariableTok{$MY_VOLUME_PATH}\NormalTok{/admin/}\VariableTok{$MY_OUD_INSTANCE}\NormalTok{/create/00_init_environment}
+\FunctionTok{sed}\NormalTok{ -i -e }\StringTok{'s|^export GROUP_OU.*|export GROUP_OU="ou=Groups,dc=postgasse,dc=org"|g'}\NormalTok{ \textbackslash{}}
+    \VariableTok{$MY_VOLUME_PATH}\NormalTok{/admin/}\VariableTok{$MY_OUD_INSTANCE}\NormalTok{/create/00_init_environment}
+\FunctionTok{sed}\NormalTok{ -i -e }\StringTok{'s|^export USER_OU.*|export USER_OU="ou=People,dc=postgasse,dc=org"|g'}\NormalTok{ \textbackslash{}}
+    \VariableTok{$MY_VOLUME_PATH}\NormalTok{/admin/}\VariableTok{$MY_OUD_INSTANCE}\NormalTok{/create/00_init_environment}
+\FunctionTok{sed}\NormalTok{ -i -e }\StringTok{"s|dc=example,dc=com|dc=postgasse,dc=org|g"}\NormalTok{ \textbackslash{}}
+    \VariableTok{$MY_VOLUME_PATH}\NormalTok{/admin/}\VariableTok{$MY_OUD_INSTANCE}\NormalTok{/create/00_init_environment}
 
-cat $MY_VOLUME_PATH/admin/$MY_OUD_INSTANCE/create/00_init_environment
-\end{lstlisting}
+\FunctionTok{cat} \VariableTok{$MY_VOLUME_PATH}\NormalTok{/admin/}\VariableTok{$MY_OUD_INSTANCE}\NormalTok{/create/00_init_environment}
+\end{Highlighting}
+\end{Shaded}
 
 Lets go. Start the container and let the scripts create the OUD
 instance.
 
-\begin{lstlisting}[language=bash]
-docker start $MY_CONTAINER
-\end{lstlisting}
+\begin{Shaded}
+\begin{Highlighting}[]
+\ExtensionTok{docker}\NormalTok{ start }\VariableTok{$MY_CONTAINER}
+\end{Highlighting}
+\end{Shaded}
 
 Enjoy the log and see how your OUD EUS AD proxy is created
 
-\begin{lstlisting}[language=bash]
-docker logs -f $MY_CONTAINER
-\end{lstlisting}
+\begin{Shaded}
+\begin{Highlighting}[]
+\ExtensionTok{docker}\NormalTok{ logs -f }\VariableTok{$MY_CONTAINER}
+\end{Highlighting}
+\end{Shaded}
 
 \hypertarget{setup-eus}{%
 \subsection{Setup EUS}\label{setup-eus}}
 
-\begin{lstlisting}[language=bash]
-dbca -configureDatabase -sourceDB $ORACLE_SID -registerWithDirService true \
-    -dirServiceUserName "cn=eusadmin" -dirServicePassword manager \
-    -walletPassword TVD04manager -silent
-\end{lstlisting}
+\begin{Shaded}
+\begin{Highlighting}[]
+\ExtensionTok{dbca}\NormalTok{ -configureDatabase -sourceDB }\VariableTok{$ORACLE_SID}\NormalTok{ -registerWithDirService true \textbackslash{}}
+\NormalTok{    -dirServiceUserName }\StringTok{"cn=eusadmin"}\NormalTok{ -dirServicePassword manager \textbackslash{}}
+\NormalTok{    -walletPassword TVD04manager -silent}
+\end{Highlighting}
+\end{Shaded}
 
 Create a global DB User
 
-\begin{lstlisting}[language=SQL]
-DROP USER eus_users;
-CREATE USER eus_users IDENTIFIED GLOBALLY;  
-GRANT tvd_connect TO eus_users;  
-\end{lstlisting}
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{DROP} \FunctionTok{USER}\NormalTok{ eus_users;}
+\KeywordTok{CREATE} \FunctionTok{USER}\NormalTok{ eus_users }\KeywordTok{IDENTIFIED} \KeywordTok{GLOBALLY}\NormalTok{;  }
+\KeywordTok{GRANT}\NormalTok{ tvd_connect }\KeywordTok{TO}\NormalTok{ eus_users;  }
+\end{Highlighting}
+\end{Shaded}
 
 Define a EUS mapping to the shared schema created before
 
-\begin{lstlisting}[language=bash]
-eusm createMapping database_name="$ORACLE_SID" \
-    realm_dn="dc=postgasse,dc=org" map_type=SUBTREE \
-    map_dn="ou=People,dc=postgasse,dc=org" schema=EUS_USERS \
-    ldap_host="te2018_oud.postgasse.org" ldap_port=1389 ldap_user_dn="cn=eusadmin" \
-    ldap_user_password="manager"  
-\end{lstlisting}
+\begin{Shaded}
+\begin{Highlighting}[]
+\ExtensionTok{eusm}\NormalTok{ createMapping database_name=}\StringTok{"}\VariableTok{$ORACLE_SID}\StringTok{"}\NormalTok{ \textbackslash{}}
+\NormalTok{    realm_dn=}\StringTok{"dc=postgasse,dc=org"}\NormalTok{ map_type=SUBTREE \textbackslash{}}
+\NormalTok{    map_dn=}\StringTok{"ou=People,dc=postgasse,dc=org"}\NormalTok{ schema=EUS_USERS \textbackslash{}}
+\NormalTok{    ldap_host=}\StringTok{"te2018_oud.postgasse.org"}\NormalTok{ ldap_port=1389 ldap_user_dn=}\StringTok{"cn=eusadmin"}\NormalTok{ \textbackslash{}}
+\NormalTok{    ldap_user_password=}\StringTok{"manager"}  
+\end{Highlighting}
+\end{Shaded}
 
-\begin{lstlisting}[language=bash]
-eusm listMappings database_name="$ORACLE_SID" \
-    realm_dn="dc=postgasse,dc=org" \
-    ldap_host="te2018_oud.postgasse.org" ldap_port=1389 ldap_user_dn="cn=eusadmin" \
-    ldap_user_password="manager"
-\end{lstlisting}
+\begin{Shaded}
+\begin{Highlighting}[]
+\ExtensionTok{eusm}\NormalTok{ listMappings database_name=}\StringTok{"}\VariableTok{$ORACLE_SID}\StringTok{"}\NormalTok{ \textbackslash{}}
+\NormalTok{    realm_dn=}\StringTok{"dc=postgasse,dc=org"}\NormalTok{ \textbackslash{}}
+\NormalTok{    ldap_host=}\StringTok{"te2018_oud.postgasse.org"}\NormalTok{ ldap_port=1389 ldap_user_dn=}\StringTok{"cn=eusadmin"}\NormalTok{ \textbackslash{}}
+\NormalTok{    ldap_user_password=}\StringTok{"manager"}
+\end{Highlighting}
+\end{Shaded}
 
 Passwords are in docker logs or in the password files in
-\passthrough{\lstinline!$MY\_VOLUME\_PATH/admin/$MY\_OUD\_INSTANCE/etc!}
+\texttt{\$MY\_VOLUME\_PATH/admin/\$MY\_OUD\_INSTANCE/etc}
 
 check EUS connection
 
-\begin{lstlisting}[language=SQL]
-SQL> conn dinu/manager
-Connected.
-SQL> @sousrinf
-Database Information
---------------------
-- DB_NAME       : TDB122A
-- DB_DOMAIN     :
-- INSTANCE      : 1
-- INSTANCE_NAME     : TDB122A
-- SERVER_HOST       : urania
--
-Authentification Information
-----------------------------
-- SESSION_USER      : EUS_USERS
-- PROXY_USER        :
-- AUTHENTICATION_METHOD : PASSWORD
-- IDENTIFICATION_TYPE   : GLOBAL SHARED
-- NETWORK_PROTOCOL  :
-- OS_USER       : oracle
-- AUTHENTICATED_IDENTITY: DINU
-- ENTERPRISE_IDENTITY   : cn=Martin Berger,ou=People,dc=postgasse,dc=org
--
-Other Information
------------------
-- ISDBA         : FALSE
-- CLIENT_INFO       :
-- PROGRAM       : sqlplus@urania (TNS V1-V3)
-- MODULE        : SQL*Plus
-- IP_ADDRESS        :
-- SID           : 33
-- SERIAL#       : 17568
-- SERVER        : DEDICATED
-- TERMINAL      : pts/1
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{SQL}\OperatorTok{>}\NormalTok{ conn dinu}\OperatorTok{/}\NormalTok{manager}
+\NormalTok{Connected.}
+\NormalTok{SQL}\OperatorTok{>}\NormalTok{ @sousrinf}
+\KeywordTok{Database}\NormalTok{ Information}
+\CommentTok{--------------------}
+\OperatorTok{-}\NormalTok{ DB_NAME       : TDB122A}
+\OperatorTok{-}\NormalTok{ DB_DOMAIN     :}
+\OperatorTok{-} \KeywordTok{INSTANCE}\NormalTok{      : }\DecValTok{1}
+\OperatorTok{-}\NormalTok{ INSTANCE_NAME     : TDB122A}
+\OperatorTok{-}\NormalTok{ SERVER_HOST       : urania}
+\OperatorTok{-}
+\NormalTok{Authentification Information}
+\CommentTok{----------------------------}
+\OperatorTok{-}\NormalTok{ SESSION_USER      : EUS_USERS}
+\OperatorTok{-}\NormalTok{ PROXY_USER        :}
+\OperatorTok{-}\NormalTok{ AUTHENTICATION_METHOD : }\KeywordTok{PASSWORD}
+\OperatorTok{-}\NormalTok{ IDENTIFICATION_TYPE   : }\KeywordTok{GLOBAL} \KeywordTok{SHARED}
+\OperatorTok{-}\NormalTok{ NETWORK_PROTOCOL  :}
+\OperatorTok{-}\NormalTok{ OS_USER       : oracle}
+\OperatorTok{-}\NormalTok{ AUTHENTICATED_IDENTITY: DINU}
+\OperatorTok{-}\NormalTok{ ENTERPRISE_IDENTITY   : cn}\OperatorTok{=}\NormalTok{Martin Berger,ou}\OperatorTok{=}\NormalTok{People,dc}\OperatorTok{=}\NormalTok{postgasse,dc}\OperatorTok{=}\NormalTok{org}
+\OperatorTok{-}
+\NormalTok{Other Information}
+\CommentTok{-----------------}
+\OperatorTok{-}\NormalTok{ ISDBA         : }\KeywordTok{FALSE}
+\OperatorTok{-}\NormalTok{ CLIENT_INFO       :}
+\OperatorTok{-}\NormalTok{ PROGRAM       : sqlplus@urania (TNS V1}\OperatorTok{-}\NormalTok{V3)}
+\OperatorTok{-}\NormalTok{ MODULE        : SQL}\OperatorTok{*}\NormalTok{Plus}
+\OperatorTok{-}\NormalTok{ IP_ADDRESS        :}
+\OperatorTok{-}\NormalTok{ SID           : }\DecValTok{33}
+\OperatorTok{-}\NormalTok{ SERIAL#       : }\DecValTok{17568}
+\OperatorTok{-}\NormalTok{ SERVER        : DEDICATED}
+\OperatorTok{-}\NormalTok{ TERMINAL      : pts}\OperatorTok{/}\DecValTok{1}
 
-PL/SQL procedure successfully completed.
-\end{lstlisting}
+\NormalTok{PL}\OperatorTok{/}\NormalTok{SQL }\KeywordTok{procedure}\NormalTok{ successfully completed.}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{wass-anderes}{%
+\section{wass anderes}\label{wass-anderes}}
+
+test
+
+\hypertarget{demos-eus-kerberos-ssl-and-oud-a-guideline-1}{%
+\subsection{Demos EUS, Kerberos, SSL and OUD a
+guideline}\label{demos-eus-kerberos-ssl-and-oud-a-guideline-1}}
 
 
 

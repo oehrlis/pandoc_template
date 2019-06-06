@@ -6,9 +6,11 @@ date: "2018 November 01"
 tvddocversion: 0.9
 papersize: a4 
 listings-disable-line-numbers: true
-titlepage: false
-toc: false
-toc-own-page: false
+titlepage: true
+toc: true
+toc-own-page: true
+mainfont: Nunito Sans SemiBold
+monofont: Courier New
 ---
 
 # Table
