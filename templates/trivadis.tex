@@ -217,8 +217,6 @@ $if(colorlinks)$
   \definecolor{default-urlcolor}{HTML}{4077C0}
 $endif$
 
-\usepackage{titlesec}
-\newcommand{\sectionbreak}{\clearpage}
 \usepackage{hyperref}
 \hypersetup{
   $if(title-meta)$
@@ -255,11 +253,7 @@ $else$
   \usepackage[margin=2.5cm,includehead=true,includefoot=true,centering]{geometry}
 $endif$
 
-% load graphicx any way
 $if(logo)$
-  \usepackage[export]{adjustbox}
-  \usepackage{graphicx}
-$else$
   \usepackage[export]{adjustbox}
   \usepackage{graphicx}
 $endif$
@@ -282,22 +276,16 @@ $if(highlighting-macros)$
 $endif$
 
 $if(tables)$
-  \usepackage{longtable,booktabs,tabularx}
+  \usepackage{longtable,tabularx,booktabs}
   $if(beamer)$
     \usepackage{caption}
-    % Make caption package work with longtable
+    % These lines are needed to make table captions work with longtable:
     \makeatletter
     \def\fnum@table{\tablename~\thetable}
     \makeatother
   $else$
-    % Correct order of tables after \paragraph or \subparagraph
-    \usepackage{etoolbox}
-    \makeatletter
-    \patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
-    \makeatother
-    % Allow footnotes in longtable head/foot
-    \IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
-    \makesavenoteenv{longtable}
+    % Fix footnotes in tables (requires footnote package)
+    \IfFileExists{footnote.sty}{\usepackage{footnote}\makesavenoteenv{longtable}}{}
   $endif$
 $endif$
 
@@ -431,11 +419,8 @@ $if(beamer)$
   $if(titlegraphic)$
     \titlegraphic{\includegraphics{$titlegraphic$}}
   $endif$
-  
   $if(logo)$
     \logo{\includegraphics{$logo$}}
-  $else$
-    \logo{\includegraphics{images/TVDLogo2019.eps}}
   $endif$
 $endif$
 
@@ -558,14 +543,14 @@ $endif$
 
 % tables
 $if(tables)$
-\definecolor{table-row-color}{gray}{0.8}
-\definecolor{table-rule-color}{gray}{0.8}
+  \definecolor{table-row-color}{HTML}{F5F5F5}
+  \definecolor{table-rule-color}{HTML}{999999}
 
-\arrayrulecolor{black}
-%%\arrayrulecolor{table-rule-color}     % color of \toprule, \midrule, \bottomrule
-%\arrayrulecolor{tvdgray2}     % color of \toprule, \midrule, \bottomrule
-\setlength\heavyrulewidth{0.3ex}      % thickness of \toprule, \bottomrule
-\renewcommand{\arraystretch}{1.3}     % spacing (padding)
+  %\arrayrulecolor{black!40}
+  \arrayrulecolor{table-rule-color}     % color of \toprule, \midrule, \bottomrule
+  %\arrayrulecolor{tvdgray2}     % color of \toprule, \midrule, \bottomrule
+  \setlength\heavyrulewidth{0.3ex}      % thickness of \toprule, \bottomrule
+  \renewcommand{\arraystretch}{1.3}     % spacing (padding)
 
   % Reset rownum counter so that each table
   % starts with the same row colors.
@@ -573,10 +558,10 @@ $if(tables)$
   \let\oldlongtable\longtable
   \let\endoldlongtable\endlongtable
   \renewenvironment{longtable}{
-  %\rowcolors{3}{}{table-row-color!100}  % row color
+  \rowcolors{3}{}{table-row-color!100}  % row color
   \oldlongtable} {
-    \endoldlongtable
-\global\rownum=0\relax}
+  \endoldlongtable
+  \global\rownum=0\relax}
 
   % Unfortunately the colored cells extend beyond the edge of the 
   % table because pandoc uses @-expressions (@{}) like so: 
@@ -665,7 +650,9 @@ $else$
   \fancyhead{}
   \fancyfoot{}
 
-  \newcommand*{\TVDLogo}{$if(logo)$\includegraphics[width=0.2\textwidth]{$logo$}$else$\includegraphics[width=0.2\textwidth]{images/TVDLogo2019.eps}$endif$}
+  \newcommand*{\TVDLogo}{$if(logo)$\includegraphics[width=0.2\textwidth]{$logo$}$else$logo$endif$}
+
+  %$if(logo)$\includegraphics[width=1.00\textwidth]{$logo$}$else$logo$endif$
 
   \lhead[$if(header-right)$$header-right$$else$ \TVDLogo $endif$]{$if(header-left)$$header-left$$else$$endif$}
   \chead[$if(header-center)$$header-center$$else$$endif$]{$if(header-center)$$header-center$$else$$endif$}
@@ -701,10 +688,6 @@ $if(titlepage)$
     \begin{flushright}
       \includegraphics[width=5.12cm, right]{$logo$}
     \end{flushright}
-  $else$
-    \begin{flushright}
-      \includegraphics[width=5.12cm, right]{images/TVDLogo2019.eps}
-    \end{flushright}
   $endif$
 
   \begin{flushright}
@@ -712,7 +695,7 @@ $if(titlepage)$
     \noindent {\huge \textbf{\textsf{$title$}}}\\
     $if(subtitle)$
     \bigskip
-      {\Large \textsf{$subtitle$}}\\
+    {\Large \textsf{$subtitle$}}\\
     $endif$
 
     \bigskip
