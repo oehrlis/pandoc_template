@@ -1,0 +1,20 @@
+title: "O-DB-DOCKER"
+subtitle: "Lab and Exercise Guide"
+author: [Stefan Oehrli]
+date: "2019 October 07"
+tvddocversion: 0.1
+papersize: a4 
+listings-disable-line-numbers: true
+titlepage: true
+toc: true
+toc-own-page: true
+toc-title: Table of Contents
+numbersections: true
+mainfont: Nunito Sans SemiBold
+monofont: Courier New
+logo: examples/images/TVDLogo2019.eps
+geometry:
+- top=15mm
+- bottom=15mm
+titlepage-rule-height: 0
+header-includes: \setcounter{page}{0} # set page count to 0 for title page
