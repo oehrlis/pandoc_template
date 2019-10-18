@@ -72,4 +72,4 @@ beste Fitness & Abweichung\tabularnewline
   \hline
 \end{tabularx}
 
-teext oder so
+text oder so
