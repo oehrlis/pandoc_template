@@ -1,20 +1,59 @@
-title: "O-DB-DOCKER"
+# ---------------------------------------------------------------------------
+# Trivadis AG, Infrastructure Managed Services
+# Saegereistrasse 29, 8152 Glattbrugg, Switzerland
+# ---------------------------------------------------------------------------
+# Name.......: matadata.yml
+# Author.....: Stefan Oehrli (oes) stefan.oehrli@trivadis.com
+# Date.......: 2019.11.22
+# Revision...: 
+# Purpose....: Metadata file for pandoc coversion 
+# Notes......: 
+# Reference..: --
+# License....: Licensed under the Universal Permissive License v 1.0 as 
+#              shown at http://oss.oracle.com/licenses/upl.
+# ---------------------------------------------------------------------------
+# Modified...:
+# see git revision history for more information on changes/updates
+# ---------------------------------------------------------------------------
+title: "O-TEMPLATE"
 subtitle: "Lab and Exercise Guide"
 author: [Stefan Oehrli]
-date: "2019 October 07"
+date: "2020 April 02"
 tvddocversion: 0.1
+
+# - Page settings -----------------------------------------------------------
 papersize: a4 
 listings-disable-line-numbers: true
 titlepage: true
-toc: true
-toc-own-page: true
-toc-title: Table of Contents
-numbersections: true
-mainfont: Nunito Sans SemiBold
-monofont: Courier New
-logo: examples/images/TVDLogo2019.eps
-geometry:
-- top=15mm
-- bottom=15mm
 titlepage-rule-height: 0
+toc: true
+toc-title: Table of Contents
+toc-depth: 1
+toc-own-page: true
+lof: true
+lof-own-page: true
+numbersections: true
+#links-as-notes: true
+linkcolor: blue
+colorlinks: true
+geometry:
+    - top=15mm
+    - bottom=15mm
 header-includes: \setcounter{page}{0} # set page count to 0 for title page
+
+# - Font settings -----------------------------------------------------------
+# due to an issue with XeLaTeX with images in docker container the font family
+# has to be set to a sanserif font like Helvetica (helvet)
+fontfamily: helvet
+# For regular pandoc pdf generation with XeLaTeX mainfont is set to Nunito
+#mainfont: Nunito Sans SemiBold
+#monofont: Courier New
+
+# - Logo settings -----------------------------------------------------------
+# Local logo
+#logo: doc/images/TVDLogo2019.eps
+logo: ./examples/images/TVDLogo2019.eps
+# Container logo
+#logo: /TVDLogo2019.png
+# --- EOF --------------------------------------------------------------------
+    
