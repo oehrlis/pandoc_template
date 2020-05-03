@@ -1,0 +1,180 @@
+\hypertarget{requirements-workshop-environment}{%
+\section{Requirements Workshop
+Environment}\label{requirements-workshop-environment}}
+
+During the workshop \textbf{\emph{O-DB-DOCKER}} \emph{Oracle-Databases
+in Docker-Containers} there will be the possibility to explore different
+topics with practical examples. Each participant will be provided with a
+compute node in the Oracle Cloud for the duration of the DOAG training
+day. Alternatively, participants can perform the exercises in their own
+local VM or Docker environment. Participants are free to choose which
+environment they want to use for the workshop. Although the setup of the
+local VM respectively local Docker environment is not part of the
+workshop itself. The following summary gives a short overview of the
+different requirements for the three workshop environments.
+
+Detailed information on the workshop environment, documents,
+instructions etc. are available prior to the DOAG Training Day via
+\href{https://url.oradba.ch/DOAG2019_O-DB-DOCKER}{DOAG2019 O-DB-DOCKER}.
+If you have any questions, don't hesitate to stop by the Trivadis stand
+and ask for Stefan Oehrli.
+
+\hypertarget{requirements-and-skills}{%
+\subsection{Requirements and Skills}\label{requirements-and-skills}}
+
+The different exercises of the workshop allow a step-by-step
+introduction to the topic \emph{Oracle databases in Docker containers}.
+The following knowledge of the participants is recommended:
+
+\begin{itemize}
+\tightlist
+\item
+  Oracle database basics like installation, configuration and basic
+  database administration
+\item
+  Docker basics (see also
+  \href{https://docs.docker.com/get-started/}{Get Started, Part 1:
+  Orientation and setup})
+\item
+  Practical experience with shell scripts, SSH and the command line.
+\end{itemize}
+
+\hypertarget{compute-node-in-the-oracle-cloud}{%
+\subsection{Compute Node in the Oracle
+Cloud}\label{compute-node-in-the-oracle-cloud}}
+
+The Compute Node in the Oracle Cloud will be specially prepared for this
+workshop and will be available for practical work for the duration of
+the DOAG training day. Each compute node is configured as follows:
+
+\begin{itemize}
+\tightlist
+\item
+  \emph{Host name:} ol7dockerXX.trivadislabs.com (see host overview on
+  \href{https://url.oradba.ch/DOAG2019_O-DB-DOCKER}{DOAG2019
+  O-DB-DOCKER})
+\item
+  \emph{Internal IP address:} 10.0.0.2
+\item
+  \emph{External IP address:} see host overview on
+  \href{https://url.oradba.ch/DOAG2019_O-DB-DOCKER}{DOAG2019
+  O-DB-DOCKER}
+\item
+  \emph{VM shape:} VM.Standard2.2
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \emph{CPU:} 2.0 GHz Intel® Xeon® Platinum 8167M (2 Cores)
+  \item
+    \emph{Memory:} 30GB
+  \item
+    \emph{Disk:} ca 256GB
+  \end{itemize}
+\item
+  \emph{Software:}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Oracle Enterprise Linux 7.7
+  \item
+    Docker Engine / Community Edition
+  \item
+    Predefined Docker Images
+  \item
+    Miscellaneous Oracle binaries and Git client
+  \end{itemize}
+\end{itemize}
+
+Access to the compute nodes is exclusively via SSH and Private Keys.
+Workshop participants must ensure that they meet the following
+requirements:
+
+\begin{itemize}
+\tightlist
+\item
+  \emph{SSH client} for remote access, e.g.~Putty, MobaXterm or similar.
+\item
+  \emph{SCP Client} to copy files remotely, e.g.~WinSCP, Putty or
+  similar.
+\item
+  \emph{Text editor} for customizing / developing docker files, scripts
+  etc. e.g.~MS Visual Studio Code, UltraEdit, Notepad++ or similar
+\item
+  It must also be ensured that access to a public IP address or host
+  name is possible via an SSH key.
+\end{itemize}
+
+The following \emph{optional} points are recommended:
+
+\begin{itemize}
+\tightlist
+\item
+  GitHub account to access and download the source code. Simple download
+  does not require an account.
+\end{itemize}
+
+\hypertarget{local-vagrant-vm}{%
+\subsection{Local Vagrant VM}\label{local-vagrant-vm}}
+
+As with compute nodes, all exercises can be performed directly in a
+Local VM. Appropriate vagrant scripts for building a VM are available in
+the Git Repository
+\href{https://github.com/oehrlis/o-db-docker}{oehrlis/o-db-docker}. The
+following requirements must be met in order to set up this VM with
+Vagrant:
+
+\begin{itemize}
+\tightlist
+\item
+  \href{https://www.virtualbox.org/wiki/Downloads}{Virtualbox}
+\item
+  \href{https://www.vagrantup.com}{Vagrant}
+\item
+  Local clone of the Git repository
+  \href{https://github.com/oehrlis/o-db-docker}{oehrlis/o-db-docker}
+\item
+  Oracle Binaries for Oracle 19c and current RU.
+\item
+  Sufficient hard disk space for the VM and the Docker Images approx.
+  50GB
+\item
+  If necessary, additional tools to access and work with the VM,
+  e.g.~SSH client, text editor, etc.
+\end{itemize}
+
+Setting up a local VM is not part of the workshop. Participants who wish
+to work with a VM must configure it in advance.
+
+\hypertarget{local-docker-environment}{%
+\subsubsection{Local Docker
+Environment}\label{local-docker-environment}}
+
+As a third option, the exercises can also be performed in a local docker
+environment. This is especially useful for working on Linux or MacOS
+notebooks. In order to perform the workshop locally, the following
+requirements must be met:
+
+\begin{itemize}
+\tightlist
+\item
+  Installing the Docker Community Edition. See also
+  \href{https://docs.docker.com/install/}{About Docker - Community}
+\item
+  Local clone of the Git repository
+  \href{https://github.com/oehrlis/o-db-docker}{oehrlis/o-db-docker} and
+  \href{https://github.com/oracle/docker-images}{oracle/docker-images)}
+\item
+  Oracle Binaries for Oracle 19c and current RU.
+\item
+  Sufficient hard disk space for the VM and the Docker Images approx.
+  50GB
+\item
+  If necessary, additional tools to access and work with the VM,
+  e.g.~SSH client, text editor, git client etc.
+\end{itemize}
+
+Building a local Docker environment is not part of the workshop.
+Participants who wish to work with a local Docker installation must
+configure it in advance.

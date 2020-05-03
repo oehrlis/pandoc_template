@@ -10,7 +10,7 @@ toc: false
 numbersections: false
 mainfont: Nunito Sans SemiBold
 monofont: Courier New
-logo: examples/images/TVDLogo2019.eps
+logo: /TVDLogo2019.eps
 lang: en-US
 colorlinks: true
 geometry:

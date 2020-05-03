@@ -18,11 +18,9 @@ Zusatzaufgabe und weitere Überlegungen:
 * Wozu dient diese Software Repository?
 * Was für Alternative zum Download der Software beim Build der Docker Images gibt es?
 
-<!-- Stuff between the <div class="notes"> will be rendered as pptx slide notes -->
-<div class="notes">
 
 **Vorsausetzungen:**  Für diese Übung müssen die folgenden Anforderungen erfüllt sein:
 
 * Sicherstellen des Zugriffs auf die Docker Übungs- und Entwicklungsumgebung
 
-</div>
+
