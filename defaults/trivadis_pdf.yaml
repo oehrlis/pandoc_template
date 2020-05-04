@@ -29,9 +29,9 @@ toc: true
 toc-own-page: true
 toc-title: Table of Contents
 numbersections: true
-geometry:
-- top=15mm
-- bottom=15mm
+# geometry:
+# - top=15mm
+# - bottom=15mm
 titlepage-rule-height: 0
 header-includes: \setcounter{page}{0} # set page count to 0 for title page
 
