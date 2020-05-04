@@ -33,7 +33,7 @@ numbersections: true
 # - top=15mm
 # - bottom=15mm
 titlepage-rule-height: 0
-header-includes: \setcounter{page}{0} # set page count to 0 for title page
+#header-includes: \setcounter{page}{0} # set page count to 0 for title page
 
 # - PDF settings -----------------------------------------------------------
 # due to an issue with XeLaTeX with images in docker container the font family
