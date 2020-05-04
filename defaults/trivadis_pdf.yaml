@@ -23,7 +23,7 @@
 
 # - Page settings -----------------------------------------------------------
 papersize: a4 
-listings-disable-line-numbers: true
+# listings-disable-line-numbers: true
 titlepage: true
 toc: true
 toc-own-page: true
