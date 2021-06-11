@@ -224,10 +224,10 @@ $if(verbatim-in-note)$
 \usepackage{fancyvrb}
 $endif$
 \usepackage{xcolor}
-\definecolor{default-linkcolor}{HTML}{A50000}
-\definecolor{default-filecolor}{HTML}{A50000}
+\definecolor{default-linkcolor}{HTML}{9600FF}
+\definecolor{default-filecolor}{HTML}{9600FF}
 \definecolor{default-citecolor}{HTML}{4077C0}
-\definecolor{default-urlcolor}{HTML}{4077C0}
+\definecolor{default-urlcolor}{HTML}{9600FF}
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
 $if(footnotes-pretty)$
 % load footmisc in order to customize footnotes (footmisc has to be loaded before hyperref, cf. https://tex.stackexchange.com/a/169124/144087)
@@ -281,7 +281,7 @@ $else$
 \usepackage[margin=2.5cm,includehead=true,includefoot=true,centering,$for(geometry)$$geometry$$sep$,$endfor$]{geometry}
 $endif$
 $endif$
-$if(logo)$
+$if(titlepage-logo)$
 \usepackage[export]{adjustbox}
 \usepackage{graphicx}
 $endif$
@@ -501,8 +501,8 @@ $endif$
 $if(titlegraphic)$
 \titlegraphic{\includegraphics{$titlegraphic$}}
 $endif$
-$if(logo)$
-\logo{\includegraphics{$logo$}}
+$if(titlepage-logo)$
+\titlepage-logo{\includegraphics{$titlepage-logo$}}
 $endif$
 $endif$
 
@@ -829,17 +829,17 @@ $else$
 $if(disable-header-and-footer)$
 $else$
 \usepackage{lastpage}
-\newcommand*{\TVDLogo}{$if(logo)$\includegraphics[width=0.2\textwidth]{$logo$}$endif$}
+\newcommand*{\TVDLogo}{$if(footer-logo)$\includegraphics[width=0.1\textwidth]{$footer-logo$}$endif$}
 \usepackage[headsepline,footsepline]{scrlayer-scrpage}
 
 \newpairofpagestyles{eisvogel-header-footer}{
   \clearpairofpagestyles
-  \ihead[$if(header-right)$$header-right$$else$ \TVDLogo $endif$]{$if(header-left)$$header-left$$else$$endif$}
+  \ihead[$if(header-right)$$header-right$$else$  $endif$]{$if(header-left)$$header-left$$else$$endif$}
   \chead[$if(header-center)$$header-center$$else$$endif$]{$if(header-center)$$header-center$$else$$endif$}
-  \ohead[$if(header-left)$$header-left$$else$$endif$]{$if(header-right)$$header-right$$else$ \TVDLogo $endif$}
-  \ifoot[$if(footer-right)$$footer-right$$else$\thepage\ / \pageref*{LastPage}$endif$]{$if(footer-left)$$footer-left$$else$$title$$endif$}
+  \ohead[$if(header-left)$$header-left$$else$$endif$]{$if(header-right)$$header-right$$else$$endif$}
+  \ifoot[$if(footer-right)$$footer-right$$else$\thepage\ / \pageref*{LastPage}$endif$]{$if(footer-left)$$footer-left$$else$\TVDLogo\ $title$$endif$}
   \cfoot[$if(footer-center)$$footer-center$$else$$endif$]{$if(footer-center)$$footer-center$$else$$endif$}
-  \ofoot[$if(footer-left)$$footer-left$$else$$title$$endif$]{$if(footer-right)$$footer-right$$else$\thepage\ / \pageref*{LastPage}$endif$}
+  \ofoot[$if(footer-left)$$footer-left$$else$\TVDLogo\ $title$$endif$]{$if(footer-right)$$footer-right$$else$\thepage\ / \pageref*{LastPage}$endif$}
   \addtokomafont{pageheadfoot}{\upshape}
 }
 \pagestyle{eisvogel-header-footer}
@@ -884,9 +884,9 @@ $if(titlepage-background)$
 $endif$
 
   %% TVD logo
-  $if(logo)$
+  $if(titlepage-logo)$
     \begin{flushright}
-      \includegraphics[width=5.12cm, right]{$logo$}
+      \includegraphics[width=5.12cm, right]{$titlepage-logo$}
     \end{flushright}
   $endif$
 \newcommand{\colorRule}[3][black]{\textcolor[HTML]{#1}{\rule{#2}{#3}}}
@@ -901,17 +901,18 @@ $endif$
 $if(titlepage-background)$
 % The titlepage with a background image has other text spacing and text size
 {
+\begin{flushright}
   \setstretch{2}
   \vfill
-  \vskip -8em
-  \noindent {\huge \textbf{\textsf{$title$}}}
+  \noindent {\huge \textbf{\textsf{$title$}}}\\
   $if(subtitle)$
   \vskip 1em
-  {\Large \textsf{$subtitle$}}
+    {\Large \textsf{$subtitle$}}\\
   $endif$
-  \vskip 2em
-  \noindent {\Large \textsf{$for(author)$$author$$sep$, $endfor$} \vskip 0.6em \textsf{$date$}}
+  \bigskip
+  \textbf{$if(date)$$date$$else$\today$endif$, Version $if(tvddocversion)$$tvddocversion$$else$1.0$endif$ }\\
   \vfill
+\end{flushright}
 }
 $else$
 {
@@ -931,6 +932,22 @@ $else$
 $endif$
 
 $if(titlepage-background)$
+  %% TVD Location
+  \begin{flushright}
+    $if(tvdlocname)$ \textit{$tvdlocname$\\}  $else$ \textit{Trivadis AG\\} $endif$
+    $if(tvdlocstreet)$ \textit{$tvdlocstreet$\\}  $else$ \textit{Sägereistrasse 29\\} $endif$
+    $if(tvdlocplz)$ \textit{$tvdlocplz$}  $else$ \textit{8152} $endif$
+    $if(tvdloccity)$ \textit{$tvdloccity$}  $else$ \textit{Glattbrugg} $endif$
+    \par
+  \end{flushright}
+
+  %% TVD Contact
+  \begin{flushright}
+    $if(tvdwriter)$ \textit{$tvdwriter$\\} $endif$
+    $if(tvdtitle)$ \textit{$tvdtitle$\\} $endif$
+    $if(tvdmail)$ \textit{$tvdmail$\\}  $else$ \textit{info@trivadis.com\\} $endif$
+    $if(tvdphone)$ \textit{$tvdphone$\\}  $else$ \textit{+41 58 459 55 55\\} $endif$
+  \end{flushright}
 $else$
   %% TVD Location
   \begin{flushright}
