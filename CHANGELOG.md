@@ -10,7 +10,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- add new Fonts Montserrat and Open Sans.
+
 ### Changed
+
+- start to change word template to new Trivadis CI
 
 ### Fixed
 
