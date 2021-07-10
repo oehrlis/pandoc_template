@@ -6,7 +6,7 @@ A **pandoc LaTeX template** to convert markdown files to PDF or LaTeX using the 
 
 A custom title page      |  A basic example page
 :-------------------------:|:-------------------------:
-[![A custom title page](examples/test.png)](examples/test.pdf)  |  [![A basic example page](examples/test.png)](examples/test.pdf)
+[![A custom title page](examples/test.png)](examples/O-DB-DOCKER_Lab_and_Exercise_Guide.pdf)  |  [![A basic example page](examples/test.png)](examples/O-DB-DOCKER_Lab_and_Exercise_Guide.pdf)
 
 ## Installation
 
