@@ -371,6 +371,14 @@ $endif$
 \setlength{\emergencystretch}{3em} % prevent overfull lines
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+% Customize unorderet list
+\definecolor{default-bulletcolor}{HTML}{9600FF}
+\newcommand{\localtextbulletone}{\textcolor{$if(bulletcolor)$$bulletcolor$$else$default-bulletcolor$endif$}{\raisebox{.45ex}{\rule{.9ex}{.9ex}}}}
+\renewcommand{\labelitemi}{\localtextbulletone}
+\renewcommand{\labelitemii}{\localtextbulletone}
+\renewcommand{\labelitemiii}{\localtextbulletone}
+
 $if(numbersections)$
 \setcounter{secnumdepth}{$if(secnumdepth)$$secnumdepth$$else$5$endif$}
 $else$
