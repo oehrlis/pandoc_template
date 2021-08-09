@@ -829,7 +829,7 @@ $else$
 $if(disable-header-and-footer)$
 $else$
 \usepackage{lastpage}
-\newcommand*{\TVDLogo}{$if(footer-logo)$\includegraphics[width=0.1\textwidth]{$footer-logo$}$endif$}
+\newcommand*{\TVDLogo}{$if(footer-logo)$\includegraphics[width=\textwidth,valign=c]{$footer-logo$}$endif$}
 \usepackage[headsepline,footsepline]{scrlayer-scrpage}
 
 \newpairofpagestyles{eisvogel-header-footer}{
