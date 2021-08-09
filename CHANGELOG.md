@@ -10,7 +10,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+### Changed
+
+### Fixed
+
+### Removed
+
+## [0.1.0] - 2021-08-09
+
+### Added
+
 - add new Fonts Montserrat and Open Sans.
+- Add new Accenture logos
 
 ### Changed
 
