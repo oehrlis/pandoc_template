@@ -837,7 +837,7 @@ $else$
 $if(disable-header-and-footer)$
 $else$
 \usepackage{lastpage}
-\newcommand*{\TVDLogo}{$if(footer-logo)$\includegraphics[width=\textwidth,valign=c]{$footer-logo$}$endif$}
+\newcommand*{\TVDLogo}{$if(footer-logo)$\includegraphics[width=0.12\textwidth,valign=c]{$footer-logo$}$endif$}
 \usepackage[headsepline,footsepline]{scrlayer-scrpage}
 
 \newpairofpagestyles{eisvogel-header-footer}{
@@ -845,9 +845,9 @@ $else$
   \ihead[$if(header-right)$$header-right$$else$  $endif$]{$if(header-left)$$header-left$$else$$endif$}
   \chead[$if(header-center)$$header-center$$else$$endif$]{$if(header-center)$$header-center$$else$$endif$}
   \ohead[$if(header-left)$$header-left$$else$$endif$]{$if(header-right)$$header-right$$else$$endif$}
-  \ifoot[$if(footer-right)$$footer-right$$else$\thepage\ / \pageref*{LastPage}$endif$]{$if(footer-left)$$footer-left$$else$\TVDLogo\ $title$$endif$}
-  \cfoot[$if(footer-center)$$footer-center$$else$$endif$]{$if(footer-center)$$footer-center$$else$$endif$}
-  \ofoot[$if(footer-left)$$footer-left$$else$\TVDLogo\ $title$$endif$]{$if(footer-right)$$footer-right$$else$\thepage\ / \pageref*{LastPage}$endif$}
+  \ifoot[$if(footer-right)$$footer-right$$else$\thepage\ / \pageref*{LastPage}$endif$]{$if(footer-left)$$footer-left$$else$\TVDLogo$endif$}
+  \cfoot[$if(footer-center)$$footer-center$$else$$title$$endif$]{$if(footer-center)$$footer-center$$else$$title$$endif$}
+  \ofoot[$if(footer-left)$$footer-left$$else$\TVDLogo$endif$]{$if(footer-right)$$footer-right$$else$\thepage\ / \pageref*{LastPage}$endif$}
   \addtokomafont{pageheadfoot}{\upshape}
 }
 \pagestyle{eisvogel-header-footer}
