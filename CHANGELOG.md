@@ -16,6 +16,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
+## [0.2.0] - 2021-09-22
+
+### Changed
+
+- update Word Documents to latest CI
+
 ## [0.1.0] - 2021-08-09
 
 ### Added
@@ -70,3 +76,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [unreleased]: https://github.com/oehrlis/pandoc_template
 [0.0.1]: https://github.com/oehrlis/pandoc_template/releases/tag/v0.0.1
 [0.1.0]: https://github.com/oehrlis/pandoc_template/releases/tag/v0.1.0
+[0.2.0]: https://github.com/oehrlis/pandoc_template/releases/tag/v0.2.0
