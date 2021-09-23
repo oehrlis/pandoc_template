@@ -951,7 +951,7 @@ $if(titlepage-background)$
 
   %% TVD Contact
   \begin{flushright}
-    $if(tvdwriter)$ \textit{$tvdwriter$\\} $endif$
+    $if(tvdcontact)$ \textit{$tvdcontact$\\} $else$ \author{$for(author)$$author$$sep$ \and $endfor$} $endif$
     $if(tvdtitle)$ \textit{$tvdtitle$\\} $endif$
     $if(tvdmail)$ \textit{$tvdmail$\\}  $else$ \textit{info@trivadis.com\\} $endif$
     $if(tvdphone)$ \textit{$tvdphone$\\}  $else$ \textit{+41 58 459 55 55\\} $endif$
@@ -963,12 +963,13 @@ $else$
     $if(tvdlocstreet)$ \textit{$tvdlocstreet$\\}  $else$ \textit{Sägereistrasse 29\\} $endif$
     $if(tvdlocplz)$ \textit{$tvdlocplz$}  $else$ \textit{8152} $endif$
     $if(tvdloccity)$ \textit{$tvdloccity$}  $else$ \textit{Glattbrugg} $endif$
+    $if(tvdloccountry)$ \textit{$tvdloccountry$} $endif$
     \par
   \end{flushright}
 
   %% TVD Contact
   \begin{flushright}
-    $if(tvdwriter)$ \textit{$tvdwriter$\\} $endif$
+    $if(tvdcontact)$ \textit{$tvdcontact$\\} $else$ \author{$for(author)$$author$$sep$ \and $endfor$} $endif$
     $if(tvdtitle)$ \textit{$tvdtitle$\\} $endif$
     $if(tvdmail)$ \textit{$tvdmail$\\}  $else$ \textit{info@trivadis.com\\} $endif$
     $if(tvdphone)$ \textit{$tvdphone$\\}  $else$ \textit{+41 58 459 55 55\\} $endif$
