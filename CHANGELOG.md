@@ -10,7 +10,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- add png version of Trivadis logos
+
 ### Changed
+
+- update docx files to latest Trivadis CI
 
 ### Fixed
 
