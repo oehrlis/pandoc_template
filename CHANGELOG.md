@@ -10,15 +10,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+### Changed
+
+### Fixed
+
+### Removed
+
+## [0.3.0] - 2021-09-23
+
+### Added
+
 - add png version of Trivadis logos
 
 ### Changed
 
 - update docx files to latest Trivadis CI
-
-### Fixed
-
-### Removed
+- change *tvdwriter* to *tvdcontact* and set default value to authors
 
 ## [0.2.0] - 2021-09-22
 
@@ -81,3 +88,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [0.0.1]: https://github.com/oehrlis/pandoc_template/releases/tag/v0.0.1
 [0.1.0]: https://github.com/oehrlis/pandoc_template/releases/tag/v0.1.0
 [0.2.0]: https://github.com/oehrlis/pandoc_template/releases/tag/v0.2.0
+[0.3.0]: https://github.com/oehrlis/pandoc_template/releases/tag/v0.3.0
