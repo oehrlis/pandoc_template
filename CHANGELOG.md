@@ -16,6 +16,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
+## [0.3.1] - 2021-09-29
+
+### Fixed
+
+- fix template after font issue with oehrlis/pandoc
+
 ## [0.3.0] - 2021-09-23
 
 ### Added
@@ -89,3 +95,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [0.1.0]: https://github.com/oehrlis/pandoc_template/releases/tag/v0.1.0
 [0.2.0]: https://github.com/oehrlis/pandoc_template/releases/tag/v0.2.0
 [0.3.0]: https://github.com/oehrlis/pandoc_template/releases/tag/v0.3.0
+[0.3.1]: https://github.com/oehrlis/pandoc_template/releases/tag/v0.3.1
