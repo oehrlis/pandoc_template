@@ -16,6 +16,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
+## [0.5.0] - 2021-11-10
+
+### Changed
+
+- Revision of [trivadis.tex](templates/trivadis.tex) according to marketing and
+  Trivadis CI specifications.
+- Revision of [trivadis.pptx](templates/trivadis.pptx) according to marketing and
+  Trivadis CI specifications.
+- Revision of [trivadis.docx](templates/trivadis.docx) according to marketing and
+  Trivadis CI specifications.
+
 ## [0.4.0] - 2021-10-13
 
 ### Changed
