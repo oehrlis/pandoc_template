@@ -1,0 +1,114 @@
+# ------------------------------------------------------------------------------
+# Trivadis - Part of Accenture, Platform Factory - Transactional Data Platform
+# Saegereistrasse 29, 8152 Glattbrugg, Switzerland
+# ------------------------------------------------------------------------------
+# Name.......: matadata.yml
+# Author.....: Stefan Oehrli (oes) stefan.oehrli@trivadis.com
+# Date.......: 2019.11.22
+# Revision...: 
+# Purpose....: Metadata file for pandoc coversion 
+# Notes......: 
+# Reference..: --
+# License....: Apache License Version 2.0, January 2004 as shown
+#              at http://www.apache.org/licenses/
+# ------------------------------------------------------------------------------
+# Modified...:
+# see git revision history for more information on changes/updates
+# ------------------------------------------------------------------------------
+title: "Trivadis Markdown Doc Template"
+subtitle: A template for markdown based documentation 
+author: 
+- Stefan Oehrli
+# date is set by pandoc, uncomment the date line to explicitly set a date
+#date: 2020 November 06
+tvddocversion: 0.0.3
+lang: en
+
+# - TVD Variables --------------------------------------------------------------
+# Mainly used to customize the cover page
+# tvdlocname:     Trivadis part of Accenture
+# tvdlocstreet:   Sägereistrasse 29
+# tvdlocplz:      8152
+# tvdloccity:     Glattbrugg
+# tvdloccountry:  Switzerland
+# tvdcontact:
+# tvdtitle:
+# tvdmail:        info@trivadis.com
+# tvdphone:       +41 58 459 55 55
+
+# - Book settings --------------------------------------------------------------
+#book: true
+#classoption: oneside
+
+# - Page settings --------------------------------------------------------------
+papersize: a4 
+geometry:
+- top=25mm
+- bottom=25mm
+- right=20mm
+
+# - Titel Page -----------------------------------------------------------------
+titlepage: true
+titlepage-rule-height: 0
+# titlepage-text-color: 000000 
+titlepage-text-color: FFFFFF
+titlepage-background: /trivadis/images/TVDTitle2021.png
+
+# - TOC Config -----------------------------------------------------------------
+toc: true
+toc-own-page: true
+toc-title: Table of Contents
+toc-depth: 2
+
+# - List of Tables / Figures ---------------------------------------------------
+lof: true
+lof-own-page: true
+lot: true
+lot-own-page: true
+
+numbersections: true
+links-as-notes: false
+linkcolor:    tvdcolor
+urlcolor:     tvdcolor
+filecolor:    tvdcolor
+bulletcolor:  tvdcolor
+
+# - Listings -------------------------------------------------------------------
+listings: true
+listings-disable-line-numbers: true
+code-block-font-size: \scriptsize
+
+# - LaTeX config ---------------------------------------------------------------
+header-includes: |
+  \setcounter{page}{0}
+  \usepackage{sectsty}
+  \sectionfont{\clearpage}
+  \usepackage{awesomebox}
+  \definecolor{tvdcolor}{HTML}{9600FF}
+
+# - Pandoc Environment ---------------------------------------------------------
+pandoc-latex-environment:
+  noteblock:      [note]
+  tipblock:       [tip]
+  warningblock:   [warning]
+  cautionblock:   [caution]
+  importantblock: [important]
+  
+# - Font settings --------------------------------------------------------------
+# due to an issue with XeLaTeX with images in docker container the font family
+# has to be set to a sanserif font like Helvetica (helvet)
+# fontfamily: helvet
+# For regular pandoc pdf generation with XeLaTeX mainfont is set to Open Sans
+sansfont: Montserrat      # Title font
+mainfont: Open Sans       # Copy text font
+monofont: Courier New     # Code Text
+
+# - Logo settings --------------------------------------------------------------
+# Local logo
+# logo: images/TVDLogo2019.eps
+# Container based logos
+logo: /trivadis/images/TVDLogo2021blue.eps
+footer-logo: /trivadis/images/TVDLogo2021blue.eps
+titlepage-logo: /trivadis/images/TVDLogo2021white.eps
+# titlepage-logo: /trivadis/images/TVDLogo2021blue.eps
+# --- EOF ----------------------------------------------------------------------    
