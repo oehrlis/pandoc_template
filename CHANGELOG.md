@@ -16,6 +16,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
+## [0.6.0] - 2022-09-27
+
+### Changed
+
+- Clean up and slim down images and template folders
+  remove unused / legacy files
+
 ## [0.5.0] - 2021-11-10
 
 ### Changed
@@ -115,3 +122,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [0.3.1]: https://github.com/oehrlis/pandoc_template/releases/tag/v0.3.1
 [0.4.0]: https://github.com/oehrlis/pandoc_template/releases/tag/v0.4.0
 [0.5.0]: https://github.com/oehrlis/pandoc_template/releases/tag/v0.5.0
+[0.6.0]: https://github.com/oehrlis/pandoc_template/releases/tag/v0.6.0
