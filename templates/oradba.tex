@@ -1,33 +1,25 @@
 %%
-% -----------------------------------------------------------------------------
-% Trivadis AG, Infrastructure Managed Services
-% Saegereistrasse 29, 8152 Glattbrugg, Switzerland
-% -----------------------------------------------------------------------------
-% Name.......: trivadis.tex
-% Author.....: Stefan Oehrli (oes) stefan.oehrli@trivadis.com
+% ------------------------------------------------------------------------------
+% OraDBA - Oracle Database Infrastructure and Security, 5630 Muri, Switzerland
+% ------------------------------------------------------------------------------
+% Name.......: oradba.tex
+% Author.....: Stefan Oehrli (oes) stefan.oehrli@oradba.ch
 % Editor.....: Stefan Oehrli
-% Date.......: 2018.11.01
+% Date.......: 2023.08.17
 % Revision...: --
 % Purpose....: LaTeX template for pandoc
 % Notes......: For usage information and examples visit the GitHub page of this 
 %              template: https://github.com/oehrlis/pandoc_template
 % Reference..: https://github.com/Wandmalfarbe/pandoc-latex-template
-% License....: GPL-3.0+
-% -----------------------------------------------------------------------------
-% Modified :
-% see git revision history with git log for more information on changes
-% -----------------------------------------------------------------------------
+% License....: Apache License Version 2.0, January 2004 as shown
+%              at http://www.apache.org/licenses/
+% ------------------------------------------------------------------------------
 %%
 
 % Options for packages loaded elsewhere
 \PassOptionsToPackage{unicode$for(hyperrefoptions)$,$hyperrefoptions$$endfor$}{hyperref}
 \PassOptionsToPackage{hyphens}{url}
 \PassOptionsToPackage{dvipsnames,svgnames,x11names,table}{xcolor}
-$if(dir)$
-$if(latex-dir-rtl)$
-\PassOptionsToPackage{RTLdocument}{bidi}
-$endif$
-$endif$
 $if(CJKmainfont)$
 \PassOptionsToPackage{space}{xeCJK}
 $endif$
@@ -35,9 +27,6 @@ $endif$
 \documentclass[
 $if(fontsize)$
   $fontsize$,
-$endif$
-$if(lang)$
-  $babel-lang$,
 $endif$
 $if(papersize)$
   $papersize$paper,
@@ -63,9 +52,10 @@ $if(background-image)$
 \usebackgroundtemplate{%
   \includegraphics[width=\paperwidth]{$background-image$}%
 }
+% In beamer background-image does not work well when other images are used, so this is the workaround
+\pgfdeclareimage[width=\paperwidth,height=\paperheight]{background}{$background-image$}
+\usebackgroundtemplate{\pgfuseimage{background}}
 $endif$
-\usepackage{fontspec}
-
 \usepackage{pgfpages}
 \setbeamertemplate{caption}[numbered]
 \setbeamertemplate{caption label separator}{: }
@@ -114,14 +104,11 @@ $if(beamerarticle)$
 \usepackage{beamerarticle} % needs to be loaded first
 $endif$
 \usepackage{amsmath,amssymb}
-$if(fontfamily)$
-\usepackage[$for(fontfamilyoptions)$$fontfamilyoptions$$sep$,$endfor$]{$fontfamily$}
-$else$
-\usepackage{lmodern}
-$endif$
 $if(linestretch)$
 \usepackage{setspace}
 $else$
+% Use setspace anyway because we change the default line spacing.
+% The spacing is changed early to affect the titlepage and the TOC.
 \usepackage{setspace}
 \setstretch{1.2}
 $endif$
@@ -133,15 +120,48 @@ $endif$
 \else % if luatex or xetex
 $if(mathspec)$
   \ifXeTeX
-    \usepackage{mathspec}
+    \usepackage{mathspec} % this also loads fontspec
   \else
-    \usepackage{unicode-math}
+    \usepackage{unicode-math} % this also loads fontspec
   \fi
 $else$
-  \usepackage{unicode-math}
+  \usepackage{unicode-math} % this also loads fontspec
 $endif$
-  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures{Scale=MatchLowercase}$-- must come before Beamer theme
   \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+$if(fontfamily)$
+$else$
+$-- Set default font before Beamer theme so the theme can override it
+\usepackage{lmodern}
+$endif$
+$-- Set Beamer theme before user font settings so they can override theme
+$if(beamer)$
+$if(theme)$
+\usetheme[$for(themeoptions)$$themeoptions$$sep$,$endfor$]{$theme$}
+$endif$
+$if(colortheme)$
+\usecolortheme{$colortheme$}
+$endif$
+$if(fonttheme)$
+\usefonttheme{$fonttheme$}
+$endif$
+$if(mainfont)$
+\usefonttheme{serif} % use mainfont rather than sansfont for slide text
+$endif$
+$if(innertheme)$
+\useinnertheme{$innertheme$}
+$endif$
+$if(outertheme)$
+\useoutertheme{$outertheme$}
+$endif$
+$endif$
+$-- User font settings (must come after default font and Beamer theme)
+$if(fontfamily)$
+\usepackage[$for(fontfamilyoptions)$$fontfamilyoptions$$sep$,$endfor$]{$fontfamily$}
+$endif$
+\ifPDFTeX\else
+  % xetex/luatex font selection
 $if(mainfont)$
   \setmainfont[$for(mainfontoptions)$$mainfontoptions$$sep$,$endfor$]{$mainfont$}
 $endif$
@@ -169,6 +189,12 @@ $if(CJKmainfont)$
   \ifXeTeX
     \usepackage{xeCJK}
     \setCJKmainfont[$for(CJKoptions)$$CJKoptions$$sep$,$endfor$]{$CJKmainfont$}
+    $if(CJKsansfont)$
+      \setCJKsansfont[$for(CJKoptions)$$CJKoptions$$sep$,$endfor$]{$CJKsansfont$}
+    $endif$
+    $if(CJKmonofont)$
+      \setCJKmonofont[$for(CJKoptions)$$CJKoptions$$sep$,$endfor$]{$CJKmonofont$}
+    $endif$
   \fi
 $endif$
 $if(luatexjapresetoptions)$
@@ -189,7 +215,7 @@ $if(zero-width-non-joiner)$
 \def\zerowidthnonjoiner{%
   % Prevent ligatures and adjust kerning, but still support hyphenating.
   \texorpdfstring{%
-    \textormath{\nobreak\discretionary{-}{}{\kern.03em}%
+    \TextOrMath{\nobreak\discretionary{-}{}{\kern.03em}%
       \ifvmode\else\nobreak\hskip\z@skip\fi}{}%
   }{}%
 }
@@ -201,26 +227,6 @@ $if(zero-width-non-joiner)$
   \protected\def ^^^^200c{\zerowidthnonjoiner}
 \fi
 %% End of ZWNJ support
-$endif$
-$if(beamer)$
-$if(theme)$
-\usetheme[$for(themeoptions)$$themeoptions$$sep$,$endfor$]{$theme$}
-$endif$
-$if(colortheme)$
-\usecolortheme{$colortheme$}
-$endif$
-$if(fonttheme)$
-\usefonttheme{$fonttheme$}
-$endif$
-$if(mainfont)$
-\usefonttheme{serif} % use mainfont rather than sansfont for slide text
-$endif$
-$if(innertheme)$
-\useinnertheme{$innertheme$}
-$endif$
-$if(outertheme)$
-\useoutertheme{$outertheme$}
-$endif$
 $endif$
 % Use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
@@ -245,12 +251,12 @@ $if(verbatim-in-note)$
 \usepackage{fancyvrb}
 $endif$
 \usepackage{xcolor}
-\definecolor{default-linkcolor}{HTML}{9600FF}
-\definecolor{default-filecolor}{HTML}{9600FF}
+\definecolor{default-linkcolor}{HTML}{A50000}
+\definecolor{default-filecolor}{HTML}{A50000}
 \definecolor{default-citecolor}{HTML}{4077C0}
-\definecolor{default-urlcolor}{HTML}{9600FF}
-
-\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\definecolor{default-urlcolor}{HTML}{4077C0}
+\definecolor{title-color}{HTML}{$if(title-color)$$title-color$$else$000000$endif$}
+\definecolor{subtitle-color}{HTML}{$if(subtitle-color)$$subtitle-color$$else$A100FF$endif$}
 $if(footnotes-pretty)$
 % load footmisc in order to customize footnotes (footmisc has to be loaded before hyperref, cf. https://tex.stackexchange.com/a/169124/144087)
 \usepackage[hang,flushmargin,bottom,multiple]{footmisc}
@@ -258,38 +264,6 @@ $if(footnotes-pretty)$
 \setlength{\footnotesep}{\baselineskip} % set space between multiple footnotes
 \setlength{\skip\footins}{0.3cm} % set space between page content and footnote
 \setlength{\footskip}{0.9cm} % set space between footnote and page bottom
-$endif$
-\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
-\hypersetup{
-$if(title-meta)$
-  pdftitle={$title-meta$},
-$endif$
-$if(author-meta)$
-  pdfauthor={$author-meta$},
-$endif$
-$if(lang)$
-  pdflang={$lang$},
-$endif$
-$if(subject)$
-  pdfsubject={$subject$},
-$endif$
-$if(keywords)$
-  pdfkeywords={$for(keywords)$$keywords$$sep$, $endfor$},
-$endif$
-$if(colorlinks)$
-  colorlinks=true,
-  linkcolor=$if(linkcolor)$$linkcolor$$else$default-linkcolor$endif$,
-  filecolor=$if(filecolor)$$filecolor$$else$default-filecolor$endif$,
-  citecolor=$if(citecolor)$$citecolor$$else$default-citecolor$endif$,
-  urlcolor=$if(urlcolor)$$urlcolor$$else$default-urlcolor$endif$,
-$else$
-  hidelinks,
-$endif$
-  breaklinks=true,
-  pdfcreator={LaTeX via pandoc with the Trivadis template (based on Eisvogel)}}
-\urlstyle{same} % disable monospaced font for URLs
-$if(verbatim-in-note)$
-\VerbatimFootnotes % allow verbatim text in footnotes
 $endif$
 $if(geometry)$
 $if(beamer)$
@@ -378,34 +352,34 @@ $if(graphics)$
 \setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
 % Set default figure placement to htbp
 \makeatletter
-\def\fps@figure{htbp}
+% Make use of float-package and set default placement for figures to H.
+% The option H means 'PUT IT HERE' (as  opposed to the standard h option which means 'You may put it here if you like').
+\usepackage{float}
+\floatplacement{figure}{$if(float-placement-figure)$$float-placement-figure$$else$H$endif$}
 \makeatother
 $endif$
-$if(links-as-notes)$
-% Make links footnotes instead of hotlinks:
-\DeclareRobustCommand{\href}[2]{#2\footnote{\url{#1}}}
+$if(svg)$
+\usepackage{svg}
 $endif$
 $if(strikeout)$
 $-- also used for underline
-\usepackage[normalem]{ulem}
-% Avoid problems with \sout in headers with hyperref
-\pdfstringdefDisableCommands{\renewcommand{\sout}{}}
+\ifLuaTeX
+  \usepackage{luacolor}
+  \usepackage[soul]{lua-ul}
+\else
+\usepackage{soul}
+\fi
 $endif$
 \setlength{\emergencystretch}{3em} % prevent overfull lines
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
-
-% Customize unorderet list
-\definecolor{default-bulletcolor}{HTML}{000000}
-\newcommand{\localtextbulletone}{\textcolor{$if(bulletcolor)$$bulletcolor$$else$default-bulletcolor$endif$}{\raisebox{.45ex}{\rule{.9ex}{.9ex}}}}
-\renewcommand{\labelitemi}{\localtextbulletone}
-\renewcommand{\labelitemii}{\localtextbulletone}
-\renewcommand{\labelitemiii}{\localtextbulletone}
-
 $if(numbersections)$
 \setcounter{secnumdepth}{$if(secnumdepth)$$secnumdepth$$else$5$endif$}
 $else$
 \setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+$endif$
+$if(subfigure)$
+\usepackage{subcaption}
 $endif$
 $if(beamer)$
 $else$
@@ -449,42 +423,38 @@ $if(csl-refs)$
 \newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{#1}\break}
 \newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
 $endif$
-$for(header-includes)$
-$header-includes$
-$endfor$
-
-% former header from metadata
-\setcounter{page}{0}
-\usepackage{awesomebox}
-\usepackage{sectsty}
-\sectionfont{\clearpage}
-\definecolor{tvdcolor}{HTML}{9600FF}
-
-\newfontfamily\tvdmfamily{Montserrat}
-\newfontfamily\tvdofamily{Open Sans Light}
-\addtokomafont{title}{\sffamily\MakeUppercase}
-\addtokomafont{subtitle}{\ttfamily\bfseries}
-
-% modify section header fonts
-\makeatletter
-\renewcommand\sectionlinesformat[4]{\ifstr{#1}{section}{\@hangfrom{\sffamily\hskip #2#3}{\sffamily\MakeUppercase{#4}}}{\@hangfrom{\normalfont\bfseries\hskip #2#3}{\normalfont\bfseries\MakeUppercase{#4}}}}
-\renewcommand\sectioncatchphraseformat[4]{\ifstr{#1}{section}{\@hangfrom{\sffamily\hskip #2#3}{\sffamily\MakeUppercase{#4}}}{\@hangfrom{\normalfont\bfseries\hskip #2#3}{\normalfont\bfseries\MakeUppercase{#4}}}}
-\makeatother
-
 $if(lang)$
-  \usepackage[$for(babel-otherlangs)$$babel-otherlangs$,$endfor$main=$babel-lang$]{babel}
+\ifLuaTeX
+\usepackage[bidi=basic]{babel}
+\else
+\usepackage[bidi=default]{babel}
+\fi
+$if(babel-lang)$
+\babelprovide[main,import]{$babel-lang$}
+$if(mainfont)$
+\ifPDFTeX
+\else
+\babelfont{rm}[$for(mainfontoptions)$$mainfontoptions$$sep$,$endfor$]{$mainfont$}
+\fi
+$endif$
+$endif$
+$for(babel-otherlangs)$
+\babelprovide[import]{$babel-otherlangs$}
+$endfor$
+$for(babelfonts/pairs)$
+\babelfont[$babelfonts.key$]{rm}{$babelfonts.value$}
+$endfor$
 % get rid of language-specific shorthands (see #6817):
 \let\LanguageShortHands\languageshorthands
 \def\languageshorthands#1{}
 $endif$
+$for(header-includes)$
+$header-includes$
+$endfor$
 \ifLuaTeX
   \usepackage{selnolig}  % disable illegal ligatures
 \fi
 $if(dir)$
-\ifXeTeX
-  % Load bidi as late as possible as it modifies e.g. graphicx
-  \usepackage{bidi}
-\fi
 \ifPDFTeX
   \TeXXeTstate=1
   \newcommand{\RL}[1]{\beginR #1\endR}
@@ -509,9 +479,45 @@ $endif$
 $if(csquotes)$
 \usepackage{csquotes}
 $endif$
-
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{$if(urlstyle)$$urlstyle$$else$same$endif$}
+$if(links-as-notes)$
+% Make links footnotes instead of hotlinks:
+\DeclareRobustCommand{\href}[2]{#2\footnote{\url{#1}}}
+$endif$
+$if(verbatim-in-note)$
+\VerbatimFootnotes % allow verbatim text in footnotes
+$endif$
+\hypersetup{
+$if(title-meta)$
+  pdftitle={$title-meta$},
+$endif$
+$if(author-meta)$
+  pdfauthor={$author-meta$},
+$endif$
+$if(lang)$
+  pdflang={$lang$},
+$endif$
+$if(subject)$
+  pdfsubject={$subject$},
+$endif$
+$if(keywords)$
+  pdfkeywords={$for(keywords)$$keywords$$sep$, $endfor$},
+$endif$
+$if(colorlinks)$
+  colorlinks=true,
+  linkcolor={$if(linkcolor)$$linkcolor$$else$default-linkcolor$endif$},
+  filecolor={$if(filecolor)$$filecolor$$else$default-filecolor$endif$},
+  citecolor={$if(citecolor)$$citecolor$$else$default-citecolor$endif$},
+  urlcolor={$if(urlcolor)$$urlcolor$$else$default-urlcolor$endif$},
+$else$
+  hidelinks,
+$endif$
+  breaklinks=true,
+  pdfcreator={LaTeX via pandoc with the Eisvogel template}}
 $if(title)$
-\title{\MakeUppercase{$title$}$if(thanks)$\thanks{$thanks$}$endif$}
+\title{$title$$if(thanks)$\thanks{$thanks$}$endif$}
 $endif$
 $if(subtitle)$
 $if(beamer)$
@@ -519,7 +525,7 @@ $else$
 \usepackage{etoolbox}
 \makeatletter
 \providecommand{\subtitle}[1]{% add subtitle to \maketitle
-  \apptocmd{\@title}{\par {\MakeUppercase\large #1 \par}}{}{}
+  \apptocmd{\@title}{\par {\large #1 \par}}{}{}
 }
 \makeatother
 $endif$
@@ -534,8 +540,8 @@ $endif$
 $if(titlegraphic)$
 \titlegraphic{\includegraphics{$titlegraphic$}}
 $endif$
-$if(titlepage-logo)$
-\titlepage-logo{\includegraphics{$titlepage-logo$}}
+$if(logo)$
+\logo{\includegraphics{$logo$}}
 $endif$
 $endif$
 
@@ -596,7 +602,7 @@ $endif$
 \item\relax\color{blockquote-text}\ignorespaces}{\unskip\unskip\endlist\end{customblockquote}}
 
 %
-% Source Sans Pro as the de­fault font fam­ily
+% Source Sans Pro as the default font family
 % Source Code Pro for monospace text
 %
 % 'default' option sets the default
@@ -712,8 +718,8 @@ $if(listings)$
 %
 % general listing colors
 %
-\definecolor{listing-background}{HTML}{F2F2F2}
-\definecolor{listing-rule}{HTML}{BFBFBF}
+\definecolor{listing-background}{HTML}{F7F7F7}
+\definecolor{listing-rule}{HTML}{B3B2B3}
 \definecolor{listing-numbers}{HTML}{B3B2B3}
 \definecolor{listing-text-color}{HTML}{000000}
 \definecolor{listing-keyword}{HTML}{435489}
@@ -723,7 +729,7 @@ $if(listings)$
 \definecolor{listing-string}{HTML}{00999A}
 \definecolor{listing-comment}{HTML}{8E8E8E}
 
-\lstdefinestyle{trivadis_listing_style}{
+\lstdefinestyle{eisvogel_listing_style}{
   language         = java,
 $if(listings-disable-line-numbers)$
   xleftmargin      = 0.6em,
@@ -738,7 +744,7 @@ $endif$
                       \lst@ifdisplaystyle%
                       $if(code-block-font-size)$$code-block-font-size$$else$\small$endif$%
                       \fi\ttfamily{},
-                      breaklines       = true,
+  breaklines       = true,
   frame            = single,
   framesep         = 0.19em,
   rulecolor        = \color{listing-rule},
@@ -761,8 +767,8 @@ $endif$
   literate         =
   {á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1 {ú}{{\'u}}1
   {Á}{{\'A}}1 {É}{{\'E}}1 {Í}{{\'I}}1 {Ó}{{\'O}}1 {Ú}{{\'U}}1
-  {à}{{\`a}}1 {è}{{\'e}}1 {ì}{{\`i}}1 {ò}{{\`o}}1 {ù}{{\`u}}1
-  {À}{{\`A}}1 {È}{{\'E}}1 {Ì}{{\`I}}1 {Ò}{{\`O}}1 {Ù}{{\`U}}1
+  {à}{{\`a}}1 {è}{{\`e}}1 {ì}{{\`i}}1 {ò}{{\`o}}1 {ù}{{\`u}}1
+  {À}{{\`A}}1 {È}{{\`E}}1 {Ì}{{\`I}}1 {Ò}{{\`O}}1 {Ù}{{\`U}}1
   {ä}{{\"a}}1 {ë}{{\"e}}1 {ï}{{\"i}}1 {ö}{{\"o}}1 {ü}{{\"u}}1
   {Ä}{{\"A}}1 {Ë}{{\"E}}1 {Ï}{{\"I}}1 {Ö}{{\"O}}1 {Ü}{{\"U}}1
   {â}{{\^a}}1 {ê}{{\^e}}1 {î}{{\^i}}1 {ô}{{\^o}}1 {û}{{\^u}}1
@@ -774,7 +780,7 @@ $endif$
   {…}{{\ldots}}1 {≥}{{>=}}1 {≤}{{<=}}1 {„}{{\glqq}}1 {“}{{\grqq}}1
   {”}{{''}}1
 }
-\lstset{style=trivadis_listing_style}
+\lstset{style=eisvogel_listing_style}
 
 %
 % Java (Java SE 12, 2019-06-22)
@@ -835,21 +841,29 @@ $if(beamer)$
 $else$
 $if(disable-header-and-footer)$
 $else$
-\usepackage{lastpage}
-\newcommand*{\TVDLogo}{$if(footer-logo)$\includegraphics[width=0.12\textwidth,valign=c]{$footer-logo$}$endif$}
-\usepackage[headsepline,footsepline]{scrlayer-scrpage}
-
-\newpairofpagestyles{trivadis-header-footer}{
+\usepackage{scrlayer-scrpage}
+\KOMAoptions{
+   headsepline = $if(disable-header)$false$else$true$endif$,
+   footsepline = $if(disable-footer)$false$else$true$endif$,
+   plainfootsepline = true,
+}
+\newpairofpagestyles{eisvogel-header-footer}{
   \clearpairofpagestyles
-  \ihead[$if(header-right)$$header-right$$else$  $endif$]{$if(header-left)$$header-left$$else$$endif$}
-  \chead[$if(header-center)$$header-center$$else$$endif$]{$if(header-center)$$header-center$$else$$endif$}
-  \ohead[$if(header-left)$$header-left$$else$$endif$]{$if(header-right)$$header-right$$else$$endif$}
-  \ifoot[$if(footer-right)$$footer-right$$else$\textbf{TRIVADIS.COM}$endif$]{$if(footer-left)$$footer-left$$else$\textbf{TRIVADIS.COM}$endif$}
-  \cfoot[$if(footer-center)$$footer-center$$else$\thepage\ / \pageref*{LastPage}$endif$]{$if(footer-center)$$footer-center$$else$\thepage\ / \pageref*{LastPage}$endif$}
-  \ofoot[$if(footer-left)$$footer-left$$else$\TVDLogo$endif$]{$if(footer-right)$$footer-right$$else$\TVDLogo$endif$}
+  \ihead*{$if(disable-header)$$else$$if(header-left)$$header-left$$else$$title$$endif$$endif$}
+  \chead*{$if(disable-header)$$else$$if(header-center)$$header-center$$else$$endif$$endif$}
+  \ohead*{$if(disable-header)$$else$$if(header-right)$$header-right$$else$$date$$endif$$endif$}
+  \ifoot*{$if(disable-footer)$$else$$if(footer-left)$$footer-left$$else$$for(author)$$author$$sep$, $endfor$$endif$$endif$}
+  \cfoot*{$if(disable-footer)$$else$$if(footer-center)$$footer-center$$else$$endif$$endif$}
+  \ofoot*{$if(disable-footer)$$else$$if(footer-right)$$footer-right$$else$\thepage$endif$$endif$}
   \addtokomafont{pageheadfoot}{\upshape}
 }
-\pagestyle{trivadis-header-footer}
+\pagestyle{eisvogel-header-footer}
+
+$if(book)$
+\deftripstyle{ChapterStyle}{}{}{}{}{\pagemark}{}
+\renewcommand*{\chapterpagestyle}{ChapterStyle}
+$endif$
+
 $if(page-background)$
 \backgroundsetup{
 scale=1,
@@ -878,9 +892,9 @@ $else$
 $if(titlepage)$
 \begin{titlepage}
 $if(titlepage-background)$
-\newgeometry{top=2cm, right=4cm, bottom=3cm, left=2cm}
+\newgeometry{$for(geometry)$$geometry$$sep$,$endfor$}
 $else$
-\newgeometry{left=2cm}
+\newgeometry{$for(geometry)$$geometry$$sep$,$endfor$}
 $endif$
 $if(titlepage-color)$
 \definecolor{titlepage-color}{HTML}{$titlepage-color$}
@@ -889,13 +903,6 @@ $endif$
 $if(titlepage-background)$
 \tikz[remember picture,overlay] \node[inner sep=0pt] at (current page.center){\includegraphics[width=\paperwidth,height=\paperheight]{$titlepage-background$}};
 $endif$
-
-  %% TVD logo
-  $if(titlepage-logo)$
-    \begin{flushright}
-      \includegraphics[width=5.12cm, right]{$titlepage-logo$}
-    \end{flushright}
-  $endif$
 \newcommand{\colorRule}[3][black]{\textcolor[HTML]{#1}{\rule{#2}{#3}}}
 \begin{flushleft}
 \noindent
@@ -908,76 +915,46 @@ $endif$
 $if(titlepage-background)$
 % The titlepage with a background image has other text spacing and text size
 {
-\begin{flushright}
   \setstretch{2}
   \vfill
-  \noindent {\huge \MakeUppercase{\textbf{\textsf{$title$}}}}\\
+  \vskip -8em
+  \noindent {\huge \textbf{\textsf{\color{title-color}$title$}}}
   $if(subtitle)$
   \vskip 1em
-    {\Large \MakeUppercase{\textsf{$subtitle$}}}\\
+  {\Large \textbf{\color{subtitle-color}$subtitle$}}
   $endif$
-  \bigskip
-  \textbf{$if(date)$$date$$else$\today$endif$, Version $if(tvddocversion)$$tvddocversion$$else$1.0$endif$ }\\
+  \vskip 2em
+  \noindent {\Large \textsf{$for(author)$$author$$sep$, $endfor$} \vskip 0.6em \textsf{$date$}}
   \vfill
-\end{flushright}
 }
 $else$
 {
-\begin{flushright}
   \setstretch{1.4}
   \vfill
-  \noindent {\huge \textbf{\MakeUppercase{\textsf{$title$}}}}\\
+  \noindent {\huge \textbf{\textbf{\color{title-color}$title$}}}
   $if(subtitle)$
   \vskip 1em
-    {\Large \MakeUppercase{\textsf{$subtitle$}}}\\
+  {\Large \textbf{\color{subtitle-color}$subtitle$}}
   $endif$
-  \bigskip
-  \textbf{$if(date)$$date$$else$\today$endif$, Version $if(tvddocversion)$$tvddocversion$$else$1.0$endif$ }\\
+  \vskip 2em
+  \noindent {\Large \textsf{$for(author)$$author$$sep$, $endfor$}}
   \vfill
-\end{flushright}
 }
 $endif$
 
+$if(titlepage-logo)$
+\noindent
+\includegraphics[width=$if(logo-width)$$logo-width$$else$35mm$endif$, right]{$titlepage-logo$}
+$endif$
+
 $if(titlepage-background)$
-  %% TVD Location
-  \begin{flushright}
-    $if(tvdlocname)$ \textit{$tvdlocname$\\}  $else$ \textit{Trivadis AG\\} $endif$
-    $if(tvdlocstreet)$ \textit{$tvdlocstreet$\\}  $else$ \textit{Sägereistrasse 29\\} $endif$
-    $if(tvdlocplz)$ \textit{$tvdlocplz$}  $else$ \textit{8152} $endif$
-    $if(tvdloccity)$ \textit{$tvdloccity$}  $else$ \textit{Glattbrugg} $endif$
-    \par
-  \end{flushright}
-
-  %% TVD Contact
-  \begin{flushright}
-    $if(tvdcontact)$ \textit{$tvdcontact$\\} $else$ \author{$for(author)$$author$$sep$ \and $endfor$} $endif$
-    $if(tvdtitle)$ \textit{$tvdtitle$\\} $endif$
-    $if(tvdmail)$ \textit{$tvdmail$\\}  $else$ \textit{info@trivadis.com\\} $endif$
-    $if(tvdphone)$ \textit{$tvdphone$\\}  $else$ \textit{+41 58 459 55 55\\} $endif$
-  \end{flushright}
 $else$
-  %% TVD Location
-  \begin{flushright}
-    $if(tvdlocname)$ \textit{$tvdlocname$\\}  $else$ \textit{Trivadis AG\\} $endif$
-    $if(tvdlocstreet)$ \textit{$tvdlocstreet$\\}  $else$ \textit{Sägereistrasse 29\\} $endif$
-    $if(tvdlocplz)$ \textit{$tvdlocplz$}  $else$ \textit{8152} $endif$
-    $if(tvdloccity)$ \textit{$tvdloccity$}  $else$ \textit{Glattbrugg} $endif$
-    $if(tvdloccountry)$ \textit{$tvdloccountry$} $endif$
-    \par
-  \end{flushright}
-
-  %% TVD Contact
-  \begin{flushright}
-    $if(tvdcontact)$ \textit{$tvdcontact$\\} $else$ \author{$for(author)$$author$$sep$ \and $endfor$} $endif$
-    $if(tvdtitle)$ \textit{$tvdtitle$\\} $endif$
-    $if(tvdmail)$ \textit{$tvdmail$\\}  $else$ \textit{info@trivadis.com\\} $endif$
-    $if(tvdphone)$ \textit{$tvdphone$\\}  $else$ \textit{+41 58 459 55 55\\} $endif$
-  \end{flushright}
+\textsf{$date$}
 $endif$
 \end{flushleft}
 \end{titlepage}
 \restoregeometry
-\pagenumbering{arabic}
+\pagenumbering{arabic} 
 $endif$
 $endif$
 
@@ -991,6 +968,9 @@ $endif$
 $if(title)$
 $if(beamer)$
 \frame{\titlepage}
+% don't generate the default title
+% $else$
+% \maketitle
 $endif$
 $if(abstract)$
 \begin{abstract}
@@ -1008,11 +988,9 @@ $for(include-before)$
 $include-before$
 
 $endfor$
-
 $if(toc)$
 $if(toc-title)$
 \renewcommand*\contentsname{$toc-title$}
-
 $endif$
 $if(beamer)$
 \begin{frame}[allowframebreaks]
