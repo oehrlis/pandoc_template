@@ -16,9 +16,9 @@ The following Markdown files are generic files describing the repository,
 authoring, contributing etc. They are not related to the good practice nor will
 they be used to build the good practice documentation.
 
-- [AUTHOR_GUIDE](AUTHOR_GUIDE.md) General author's guide to *Trivadis Markdown
+- [AUTHOR_GUIDE](AUTHOR_GUIDE.md) General author's guide to *OraDBA Markdown
   Doc Template*. This has to be adapted to the corresponding guideline.
-- [CHANGELOG](CHANGELOG.md) Change log for the *Trivadis Markdown Doc Template*.
+- [CHANGELOG](CHANGELOG.md) Change log for the *OraDBA Markdown Doc Template*.
 - [LICENSE](LICENSE) License for this template.
 - [VERSION](VERSION) file to store the version number.
 
@@ -26,7 +26,7 @@ they be used to build the good practice documentation.
 
 #### General Information
 
-Each language of the *Trivadis Markdown Doc Template* includes a bunch of
+Each language of the *OraDBA Markdown Doc Template* includes a bunch of
 *Markdown* files. These files do follow a naming pattern `NxMM-Title.md` where
 `N` and `MM` stands for the following:
 
@@ -264,7 +264,7 @@ But be aware of the necessary requirements. e.g. fonts, LaTeX, templates from
 
 ```bash
 pandoc --metadata-file=en/metadata.yml \
---template=$(pwd)/templates/trivadis.tex \
+--template=$(pwd)/templates/oradba.tex \
 --listings --pdf-engine=xelatex \
 --resource-path=images \
 --output=tvd-good-practice-template_en.pdf en/?x??-*.md
@@ -274,7 +274,7 @@ pandoc --metadata-file=en/metadata.yml \
 
 ```bash
 pandoc --metadata-file=en/metadata.yml \
---template=$(pwd)/templates/trivadis.tex \
+--template=$(pwd)/templates/oradba.tex \
 --listings --pdf-engine=xelatex \
 --resource-path=images --filter pandoc-latex-environment \
 --output=tvd-good-practice-template_en.pdf en/?x??-*.md
@@ -284,7 +284,7 @@ pandoc --metadata-file=en/metadata.yml \
 
 ```bash
 pandoc --metadata-file=en/metadata.yml \
---listings --reference-doc templates/trivadis.docx \
+--listings --reference-doc templates/oradba.docx \
 --resource-path=images \
 --output=tvd-good-practice-template_en.docx en/?x??-*.md
 ```
@@ -302,7 +302,7 @@ pandoc --metadata-file=en/metadata.yml \
 
 ```bash
 pandoc --metadata-file=en/metadata.yml \
---reference-doc templates/trivadis.epub \
+--reference-doc templates/oradba.epub \
 --resource-path=images \
 --output=tvd-good-practice-template_en.epub en/?x??-*.md
 ```
