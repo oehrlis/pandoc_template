@@ -56,6 +56,8 @@ $if(background-image)$
 \pgfdeclareimage[width=\paperwidth,height=\paperheight]{background}{$background-image$}
 \usebackgroundtemplate{\pgfuseimage{background}}
 $endif$
+\usepackage{fontspec}
+
 \usepackage{pgfpages}
 \setbeamertemplate{caption}[numbered]
 \setbeamertemplate{caption label separator}{: }
@@ -423,6 +425,12 @@ $if(csl-refs)$
 \newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{#1}\break}
 \newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
 $endif$
+% former header from metadata
+\setcounter{page}{0}
+\usepackage{awesomebox}
+\usepackage{sectsty}
+\sectionfont{\clearpage}
+
 $if(lang)$
 \ifLuaTeX
 \usepackage[bidi=basic]{babel}
@@ -918,7 +926,7 @@ $if(titlepage-background)$
   \setstretch{2}
   \vfill
   \vskip -8em
-  \noindent {\huge \textbf{\textsf{\color{title-color}$title$}}}
+  \noindent {\Huge \textbf{\textsf{\color{title-color}$title$}}}
   $if(subtitle)$
   \vskip 1em
   {\Large \textbf{\color{subtitle-color}$subtitle$}}
@@ -931,7 +939,7 @@ $else$
 {
   \setstretch{1.4}
   \vfill
-  \noindent {\huge \textbf{\textbf{\color{title-color}$title$}}}
+  \noindent {\Huge \textbf{\textbf{\color{title-color}$title$}}}
   $if(subtitle)$
   \vskip 1em
   {\Large \textbf{\color{subtitle-color}$subtitle$}}

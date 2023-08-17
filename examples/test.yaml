@@ -11,5 +11,5 @@ toc-own-page: true
 toc-title: Table of Contents
 numbersections: true
 thanks: "Hans, Fritz, meiner Frau und der Familie"
-mainfont: Nunito Sans SemiBold
+mainfont: Arial
 monofont: Courier New
