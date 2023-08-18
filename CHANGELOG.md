@@ -16,6 +16,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
+## [1.0.0] - 2023-08-18
+
+### Added
+
+- add new template *oradba.tex* based on [Wandmalfarbe/pandoc-latex-template](https://github.com/Wandmalfarbe/pandoc-latex-template)
+
+### Changed
+
+- Changed template to easialy support Accenture CI
+
 ## [0.6.0] - 2022-09-27
 
 ### Changed
