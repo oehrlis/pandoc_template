@@ -324,7 +324,8 @@ $highlighting-macros$
 
 $endif$
 $if(tables)$
-\usepackage{longtable,booktabs,array}
+\usepackage{longtable,tabularx,booktabs,array,ragged2e}
+\setlength{\extrarowheight}{1pt}
 $if(multirow)$
 \usepackage{multirow}
 $endif$
@@ -371,15 +372,6 @@ $if(graphics)$
 $endif$
 $if(svg)$
 \usepackage{svg}
-$endif$
-$if(strikeout)$
-$-- also used for underline
-\ifLuaTeX
-  \usepackage{luacolor}
-  \usepackage[soul]{lua-ul}
-\else
-\usepackage{soul}
-\fi
 $endif$
 \setlength{\emergencystretch}{3em} % prevent overfull lines
 \providecommand{\tightlist}{%
@@ -503,6 +495,17 @@ $if(links-as-notes)$
 % Make links footnotes instead of hotlinks:
 \DeclareRobustCommand{\href}[2]{#2\footnote{\url{#1}}}
 $endif$
+
+$if(strikeout)$
+$-- also used for underline
+\ifLuaTeX
+  \usepackage{luacolor}
+  \usepackage[soul]{lua-ul}
+\else
+\usepackage{soul}
+\fi
+$endif$
+
 $if(verbatim-in-note)$
 \VerbatimFootnotes % allow verbatim text in footnotes
 $endif$
