@@ -5,7 +5,7 @@
 % Name.......: oradba.tex
 % Author.....: Stefan Oehrli (oes) stefan.oehrli@oradba.ch
 % Editor.....: Stefan Oehrli
-% Date.......: 2023.08.17
+% Date.......: 2025.09.02
 % Revision...: --
 % Purpose....: LaTeX template for pandoc
 % Notes......: This is a LaTeX template for converting documents with Pandoc. 
@@ -490,6 +490,18 @@ $if(csquotes)$
 $endif$
 \IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+% -- Pandoc >= 2.19 image wrapper macro ---------------------------------------
+% Ensures images are constrained to page width/height when Pandoc wraps them in
+% \pandocbounded{...}. Safe even if graphicx/adjustbox were already loaded.
+\makeatletter
+\@ifpackageloaded{graphicx}{}{\usepackage{graphicx}}
+\@ifpackageloaded{adjustbox}{}{\usepackage{adjustbox}}
+\makeatother
+\providecommand{\pandocbounded}[1]{%
+  \begin{adjustbox}{max size={\linewidth}{\textheight}}#1\end{adjustbox}%
+}
+% -----------------------------------------------------------------------------
+
 \urlstyle{$if(urlstyle)$$urlstyle$$else$same$endif$}
 $if(links-as-notes)$
 % Make links footnotes instead of hotlinks:
@@ -497,13 +509,31 @@ $if(links-as-notes)$
 $endif$
 
 $if(strikeout)$
-$-- also used for underline
-\ifLuaTeX
-  \usepackage{luacolor}
-  \usepackage[soul]{lua-ul}
-\else
-\usepackage{soul}
-\fi
+% Robust underline/strikeout:
+% 1) Try ulem (no \underline/\underbar warnings).
+% 2) Else try soul.
+% 3) Else define tiny shims so documents still compile.
+\makeatletter
+\@ifpackageloaded{ulem}{}{%
+  \IfFileExists{ulem.sty}{%
+    \usepackage[normalem]{ulem}% provides \uline, \uuline, \sout, \xout, \uwave
+  }{%
+    \IfFileExists{soul.sty}{%
+      \usepackage{soul}% provides \ul, \st (may warn about changed \underline/\underbar)
+    }{%
+      % --- Minimal shims (no package available) ---
+      \providecommand{\uline}[1]{\underline{##1}}
+      \providecommand{\uuline}[1]{\underline{##1}}% simple stand-in
+      \providecommand{\sout}[1]{##1}% no strikeout available
+      \providecommand{\xout}[1]{##1}
+      \providecommand{\uwave}[1]{\underline{##1}}
+      % Optional compat for documents using soul's \ul / \st:
+      \providecommand{\ul}[1]{\underline{##1}}
+      \providecommand{\st}[1]{##1}
+    }%
+  }%
+}
+\makeatother
 $endif$
 
 $if(verbatim-in-note)$
@@ -564,8 +594,6 @@ $if(logo)$
 \logo{\includegraphics{$logo$}}
 $endif$
 $endif$
-
-
 
 %%
 %% added
