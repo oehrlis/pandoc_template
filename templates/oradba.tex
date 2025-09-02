@@ -65,6 +65,23 @@ $if(background-image)$
 \pgfdeclareimage[width=\paperwidth,height=\paperheight]{background}{$background-image$}
 \usebackgroundtemplate{\pgfuseimage{background}}
 $endif$
+
+% --- Block 'ulem' (it redefines \underline/\underbar and triggers warnings)
+% Prefer KOMA's scrlfile if available; otherwise fake-load ulem to prevent it.
+\IfFileExists{scrlfile.sty}{%
+  \usepackage{scrlfile}%
+  \PreventPackageFromLoading{ulem}%
+}{%
+  % Fallback: pretend ulem is already loaded so nothing tries to load it
+  \expandafter\def\csname ver@ulem.sty\endcsname{}%
+}
+
+% Save originals so we can restore them in case something sneaks ulem in
+\makeatletter
+\let\UL@orig@underline\underline
+\let\UL@orig@underbar\underbar
+\makeatother
+
 \usepackage{fontspec}
 
 \usepackage{pgfpages}
@@ -502,39 +519,32 @@ $endif$
 }
 % -----------------------------------------------------------------------------
 
+% --- Robust tables (Pandoc + tabularx) ---------------------------------------
+\usepackage{longtable,tabularx,booktabs,array,ragged2e}
+
+% X column that ragged-right wraps nicely
+\newcolumntype{Y}{>{\RaggedRight\arraybackslash}X}
+
+% Slightly taller rows look better with booktabs
+\setlength{\extrarowheight}{1pt}
+
+% Fallbacks in case templates/macros call the *Combo variants*
+\providecommand{\topruleCombo}{\toprule}
+\providecommand{\midruleCombo}{\midrule}
+\providecommand{\bottomruleCombo}{\bottomrule}
+% ----------------------------------------------------------------------------- 
+
 \urlstyle{$if(urlstyle)$$urlstyle$$else$same$endif$}
 $if(links-as-notes)$
 % Make links footnotes instead of hotlinks:
 \DeclareRobustCommand{\href}[2]{#2\footnote{\url{#1}}}
 $endif$
 
-$if(strikeout)$
-% Robust underline/strikeout:
-% 1) Try ulem (no \underline/\underbar warnings).
-% 2) Else try soul.
-% 3) Else define tiny shims so documents still compile.
-\makeatletter
-\@ifpackageloaded{ulem}{}{%
-  \IfFileExists{ulem.sty}{%
-    \usepackage[normalem]{ulem}% provides \uline, \uuline, \sout, \xout, \uwave
-  }{%
-    \IfFileExists{soul.sty}{%
-      \usepackage{soul}% provides \ul, \st (may warn about changed \underline/\underbar)
-    }{%
-      % --- Minimal shims (no package available) ---
-      \providecommand{\uline}[1]{\underline{##1}}
-      \providecommand{\uuline}[1]{\underline{##1}}% simple stand-in
-      \providecommand{\sout}[1]{##1}% no strikeout available
-      \providecommand{\xout}[1]{##1}
-      \providecommand{\uwave}[1]{\underline{##1}}
-      % Optional compat for documents using soul's \ul / \st:
-      \providecommand{\ul}[1]{\underline{##1}}
-      \providecommand{\st}[1]{##1}
-    }%
-  }%
-}
-\makeatother
-$endif$
+% Enable strike-through (\st) without redefining \emph or \underline
+\IfFileExists{soulutf8.sty}{\usepackage{soulutf8}}{\usepackage{soul}}
+
+% Make \sout from ulem work via soul's \st (avoid loading ulem)
+\providecommand{\sout}[1]{\st{#1}}
 
 $if(verbatim-in-note)$
 \VerbatimFootnotes % allow verbatim text in footnotes
